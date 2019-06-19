@@ -1,0 +1,56 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+}
+
+.loginform{    
+    border: 3px solid #f1f1f1; 
+    height: 450px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background:rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
+    }
+    
+.register-btn{
+    background-color: #d8c7c7;
+    color: black;
+    border-radius: 5px;
+    padding: 15px 5px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    margin: 24px  12px 65px;
+}
+
+.signin-btn{
+    background-color: #d8c7c7;
+    color: black;
+    border-radius: 5px;
+}
+
+.signin-btn:hover{
+    background: rgb(131, 129, 255);
+    color: #e6e6e6;
+}
+
+.register-btn:hover{
+    background: rgb(131, 129, 255);
+    color: #e6e6e6;
+}
+
+.registerform{
+    padding: 20px;
+    font-size: 15px;
+    border-radius: 20px;
+    margin: 10px 0 10px 10px;
+    color: #e6e6e6;
+}
