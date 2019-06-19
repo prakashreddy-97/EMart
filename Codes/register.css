@@ -3,7 +3,7 @@ body{
     background: white;
 }
 .title{
-    padding-top: 80px;
+    padding-top: 60px;
     text-align:center;
     font-size: 36px;
     color: black;
@@ -13,7 +13,7 @@ text{
 }
 
 .loginform{    
-    /* border: 3px solid #f1f1f1;  */
+    /* border: 3px solid #f1f1f1; */
     height: 650px;
     width: 450px;
     position: absolute;
@@ -23,6 +23,7 @@ text{
     transform: translateX(-50%) translateY(-50%);
     background:rgba(255, 255, 255, 0.5);
     padding: 10px 20px;
+    border-radius: 4px;
     scroll-padding-bottom: 5px;
     border: 1px solid black;
     box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
@@ -31,14 +32,13 @@ text{
 .register-btn{
     border: none;
     outline: none;
-    background: #2eb82e;
     width: 100px;
     height: 35px;
     border-radius: 5px;
     cursor: pointer;
     float: right;
-    background-color:lightblue;
-    color: black;
+    background-color: rgba(0, 0, 255, 0.733);
+    color: white;
     border-radius: 4px;
     margin: 10 150;
     
@@ -50,22 +50,19 @@ text{
     height: 25px;
     border-radius: 5px;
     cursor: pointer;
-    background-color: lightcyan;
-    color: black;
+    background-color: rgba(0, 0, 255, 0.733);
+    color: white;
     margin: 5;
 }
 
 #existingUser:hover{
     opacity: 0.5;
-    background-color: darkcyan
+    background-color: rgba(0, 0, 255, 0.733)
 }
 
 .register-btn:hover{
-    opacity: 0.5
+    opacity: 0.5;
 }
-
-
-
 
 input[type=text] {
     width: 100%;
@@ -74,4 +71,5 @@ input[type=text] {
     box-sizing: border-box;
     border: 1px solid #555;
     outline: none;
+    border-radius: 5px;
   }
