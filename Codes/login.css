@@ -35,10 +35,11 @@ text{
     height: 35px;
     border-radius: 5px;
     cursor: pointer;
-    float: center;
+    float: right;
+    text-align: center;
     background-color: rgba(0, 0, 255, 0.733);
     color: white;
-    margin: 0 175;   
+    margin: 0 45;   
 }
 
 #newuser{
@@ -58,7 +59,8 @@ text{
 }
 
 .signin-btn:hover{
-    opacity: 0.5
+    opacity: 0.5;
+    
 }
 
 input[type=text] {
