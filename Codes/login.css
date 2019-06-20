@@ -8,13 +8,10 @@ body{
     font-size: 36px;
     color: black;
 }
-text{
-    color: black;
-}
 
 .loginform{    
     /* border: 3px solid #f1f1f1; */
-    height: 380px;
+    height: 420px;
     width: 450px;
     position: absolute;
     top: 50%;
@@ -39,10 +36,10 @@ text{
     text-align: center;
     background-color: rgba(0, 0, 255, 0.733);
     color: white;
-    margin: 0 45;   
+    margin: 0 180;   
 }
 
-#newuser{
+.register-btn{
     border: none;
     width: 65px;
     height: 25px;
@@ -50,12 +47,13 @@ text{
     cursor: pointer;
     background-color: rgba(0, 0, 255, 0.733);
     color: white;
-    margin: 5;
+    margin: 10;
 }
 
-#newuser:hover{
+
+.register-btn:hover{
     opacity: 0.5;
-    background-color: rgba(0, 0, 255, 0.733)
+    
 }
 
 .signin-btn:hover{
