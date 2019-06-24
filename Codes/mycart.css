@@ -1,0 +1,144 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+}
+.addtocart-btn{
+    border: none;
+    position: relative;
+    left: 100px;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.733);
+    color: white;
+    margin: 10;
+    display: block;
+}
+.purchase-btn{
+    border: none;
+    width: 70px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: center;
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.733);
+    color: white;
+    margin: 0 ;  
+} 
+
+div.shop-item {
+    text-align: center; 
+}
+
+.shop-item{
+
+    width: 150px;
+    height: 180px;
+    padding : 20px;
+    margin : 100px auto;
+    border : 5px solid black;
+    font-weight:bold;
+}
+.shop-item-price{
+    text-align: center;
+    color:black;
+    font-weight:bold;
+    position: relative;
+    top: 30px;
+    left:-70px;
+}
+.section-header{
+    font-weight:bold;
+    text-align: center;
+    color:black;
+}
+
+ .cart-item-cart-header-cart-column{
+    text-align: center;
+    text-decoration: underline;
+    color:black;
+     font-weight:bold;
+    position: relative;
+    top: 30px;
+    left: 400px;
+} 
+.cart-price-cart-header-cart-column{
+    text-align: center;
+    text-decoration: underline;
+    color:black;
+    font-weight:bold;
+    position: relative; 
+    top: 30px;
+   left:500px;
+}
+ .cart-quantity-cart-header-cart-column{
+        text-align: center;
+        text-decoration: underline;
+        color:black;
+        font-weight:bold;
+        position: relative; 
+        top: 30px;
+       left:600px;
+    } 
+    .cart-item-cart-column{
+        text-align: center;
+        color:black;
+        font-weight:bold;
+        position: relative;
+        top: 10px;
+        left:-130px;
+
+    }
+    .cart-item-title{
+        position: relative;
+        top: 65px;
+        left: -25px;
+    }
+    .cart-price-cart-column{
+        position: relative;
+        left: 150px;
+        top: -3px;
+    }
+    .cart-quantity-input{
+        position: relative;
+        left: 250px;
+        text-align: center;
+        width: 4%;
+    }
+    .remove-btn{
+      
+        width: 70px;
+        height: 30px;
+        border-radius: 5px;
+        position: relative;
+        background-color: red;
+        color: white;
+        left: 280px;
+    }
+    .cart-total-title{
+ position: relative;
+        left: 700px;
+        font-weight:bold;
+        color:black;
+        top:40px;
+    }
+    .cart-total-price{
+        position: relative;
+               left: 720px;
+               font-weight:bold;
+               color:black;
+               top:40px;
+           }
+.purchase-btn{
+    position: relative;
+    float:center;
+    left:550px;
+    top:65px;
+    font-weight:bold; 
+}
+    
+           
+
