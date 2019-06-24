@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="register.js"></script>
 </head>
 
 <body>
@@ -94,12 +95,12 @@
                 <input name="emailid" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email ID" /><br><br>
 
                 <label for="pwd"><b>Password </b></label>
-                <input name="password" type="password" pattern=".{4,}" placeholder="Password" /><br><br>
+                <input name="password" id="pd" type="password" pattern=".{4,}" placeholder="Password" /><br><br>
                 
-                <label for="cnfpwd"><b>Confirm Password </b></label>
-                <input name="confirmpassword" type="password" pattern=".{4,}" placeholder="Confirm Password" /><br><br>
+                <label for="cnfpwd" ><b>Confirm Password </b></label>
+                <input name="confirmpassword" id="cnfpd" type="password" pattern=".{4,}" placeholder="Confirm Password" /><br><br>
 
-                <button id="registerbutton" class="register-btn">Register</button><br><br>
+                <button id="registerbutton" class="register-btn" onclick="Validate()" >Register</button><br><br>
 
                 Existing User?<button id="existingUser" class="signin-btn"><a href="./login.html" style="color:white">SignIn</a></button>
 
