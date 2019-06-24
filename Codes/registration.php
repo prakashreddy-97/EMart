@@ -22,7 +22,8 @@ if($firstname == "" || $lastname == "" || $password == "" ||  $emailid == "" )
 {
     echo "Error! Text field cannot be blank";
     $status = false;
-}
+}else{
+
 ?>
 <title><?php
 if ($status){
@@ -56,3 +57,4 @@ if ($status){
         mysqli_query($con, $reg);
         echo "Registration Successful";
     }
+}
