@@ -30,10 +30,7 @@ if ($status){
 </head>
 <body>
     <?php
-    // if (!status) {
-    //     exit;
-    // }
-    //database connection
+    
     $con = mysqli_connect('localhost', 'root', '', 'emart');
 
     if (!$con) {
