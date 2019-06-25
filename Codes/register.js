@@ -16,19 +16,17 @@ function Validate() {
 
 }
     
-    
-
 function myFunction() {
-  var x = document.getElementById("cnfpd");
-  var y = document.getElementById("pd");
-  if (x.type === "password") {
-    x.type = "text";
+  var conf_passwd = document.getElementById("cnfpd");
+  var passwd = document.getElementById("pd");
+  if (conf_passwd.type === "password") {
+    conf_passwd.type = "text";
   } else {
-    x.type = "password";
+    conf_passwd.type = "password";
   }
-  if (y.type === "password") {
-    y.type = "text";
+  if (passwd.type === "password") {
+    passwd.type = "text";
   } else {
-    y.type = "password";
+    passwd.type = "password";
   }
 }
