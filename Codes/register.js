@@ -7,6 +7,10 @@ function Validate() {
     var confirmPassword = document.getElementById("cnfpd").value;     
     if(fName =="" || lName == "" || eMail == "" || password == ""|| confirmPassword ==""){
         alert("Please enter all the fields");
-     
+        return;    
        }
+    if(password !== confirmPassword){
+        alert("Password and confirm password do not match, please check once again!");
+        return;
+    }
 }
