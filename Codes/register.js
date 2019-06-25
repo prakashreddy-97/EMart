@@ -13,4 +13,8 @@ function Validate() {
         alert("Password and confirm password do not match, please check once again!");
         return;
     }
+    if(password.length<8){
+        alert("Weak Password!!");
+        return;
+    }
 }
