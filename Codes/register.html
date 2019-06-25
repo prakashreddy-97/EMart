@@ -53,19 +53,19 @@
         <div class="form">
             <form class="registerform" action="registration.php" method="POST">
                 <label for="fname"><b>First Name</b></label>
-                <input name="firstname" id="fname" type="text" pattern="[A-Za-z]{1,}" placeholder="First Name"><br><br>
+                <input name="firstname" id="fname" type="text" pattern="[A-Za-z]{1,}" placeholder="First Name" required><br><br>
 
                 <label for="lname"><b>Last Name</b></label>
-                <input name="lastname" id = "lname" type="text" pattern="[A-Za-z]{1,}" placeholder="Last Name" /><br><br>
+                <input name="lastname" id = "lname" type="text" pattern="[A-Za-z]{1,}" placeholder="Last Name" required><br><br>
 
                 <label for="email"><b>Email ID </b></label>
-                <input name="emailid" id = "email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email ID" /><br><br>
+                <input name="emailid" id = "email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email ID" required><br><br>
 
                 <label for="pwd"><b>Password </b></label>
-                <input name="password" id="pd" type="password" pattern=".{4,}" placeholder="Password" /><br><br>
+                <input name="password" id="pd" type="password" pattern=".{4,}" placeholder="Password" required><br><br>
                 
                 <label for="cnfpwd" ><b>Confirm Password </b></label>
-                <input name="confirmpassword" id="cnfpd" type="password" pattern=".{4,}" placeholder="Confirm Password" /><br><br>
+                <input name="confirmpassword" id="cnfpd" type="password" pattern=".{4,}" placeholder="Confirm Password" required><input type="checkbox" onclick="myFunction()">Show Password<br><br>
 
                 <button id="registerbutton" class="register-btn" onclick= Validate() >Register</button><br><br>
 
