@@ -20,7 +20,8 @@ $status = true;
 
 if($firstname == "" || $lastname == "" || $password == "" ||  $emailid == "" )
 {
-    echo "Error! Text field cannot be blank";
+    header('Refresh: 2; url=register.html');
+    echo "Error! Text field cannot be blank. Try again";
     $status = false;
 }else{
 
