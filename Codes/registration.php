@@ -20,7 +20,8 @@ $status = true;
 
 if($firstname == "" || $lastname == "" || $password == "" ||  $emailid == "" )
 {
-    echo "Error! Text field cannot be blank";
+    header('Refresh: 2; url=register.html');
+    echo "Error! Text field cannot be blank. Try again";
     $status = false;
 }else{
 
@@ -51,10 +52,12 @@ if ($status){
     $numberofrows = mysqli_num_rows($sol);
 
     if ($numberofrows !== 0) {
-        echo "EMail already exists";
+        header('Refresh: 2; url=register.html');
+        echo "EMail already exists. Try again";
     } else {
         $reg = "INSERT INTO customer(firstname, lastname, emailid, password) values('".$firstname."', '".$lastname."', '".$emailid."', '".$password."');";
         mysqli_query($con, $reg);
-        echo "Registration Successful";
+        header('Refresh: 2; url=login.html');
+        echo "Registration Successful. Now Login using Email and Password";
     }
 }
