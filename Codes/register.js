@@ -1,18 +1,12 @@
-function Validate() {
-    var password = document.getElementById("pd").value;
 
-    var confirmPassword = document.getElementById("cnfpd").value;
- 
-    if (password = confirmPassword) {
-       
-        alert(" You are wrong");
-       
-    }else if(password == ""|| confirmPassword ==""){
-        alert("Please enter password");
+function Validate() {
+    var fName = document.getElementById("fname").value;
+    var lName = document.getElementById("lname").value;
+    var eMail = document.getElementById("email").value;
+    var password = document.getElementById("pd").value;
+    var confirmPassword = document.getElementById("cnfpd").value;     
+    if(fName =="" || lName == "" || eMail == "" || password == ""|| confirmPassword ==""){
+        alert("Please enter all the fields");
      
        }
-    else{
-     alert("This is correct");
-  
-    }
 }

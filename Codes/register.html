@@ -86,13 +86,13 @@
         <div class="form">
             <form class="registerform" action="registration.php" method="POST">
                 <label for="fname"><b>First Name</b></label>
-                <input name="firstname" type="text" pattern="[A-Za-z]{1,}" placeholder="First Name"><br><br>
+                <input name="firstname" id="fname" type="text" pattern="[A-Za-z]{1,}" placeholder="First Name"><br><br>
 
                 <label for="lname"><b>Last Name</b></label>
-                <input name="lastname" type="text" pattern="[A-Za-z]{1,}" placeholder="Last Name" /><br><br>
+                <input name="lastname" id = "lname" type="text" pattern="[A-Za-z]{1,}" placeholder="Last Name" /><br><br>
 
                 <label for="email"><b>Email ID </b></label>
-                <input name="emailid" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email ID" /><br><br>
+                <input name="emailid" id = "email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email ID" /><br><br>
 
                 <label for="pwd"><b>Password </b></label>
                 <input name="password" id="pd" type="password" pattern=".{4,}" placeholder="Password" /><br><br>
@@ -100,7 +100,7 @@
                 <label for="cnfpwd" ><b>Confirm Password </b></label>
                 <input name="confirmpassword" id="cnfpd" type="password" pattern=".{4,}" placeholder="Confirm Password" /><br><br>
 
-                <button id="registerbutton" class="register-btn" onclick="Validate()" >Register</button><br><br>
+                <button id="registerbutton" class="register-btn" onclick= Validate() >Register</button><br><br>
 
                 Existing User?<button id="existingUser" class="signin-btn"><a href="./login.html" style="color:white">SignIn</a></button>
 
