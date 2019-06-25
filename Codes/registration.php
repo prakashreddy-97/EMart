@@ -6,12 +6,6 @@
 // Passing the input values
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
-//$phonenumber = $POST_['phonenumber'];
-//$address = $POST_['address'];
-//$city = $POST_['city'];
-//$state = $POST_['state'];
-//$zipcode = $POST_['zipcode'];
-// $country = $POST_['country'];
 $password = $_POST['password'];
 $emailid = $_POST['emailid'];
 
