@@ -38,17 +38,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script>
-            function validateForm() {
-              var user_name = document.forms["login"]["user"].value;
-              var pass_wd = document.forms["login"]["passwd"].value;
-              if (user_name == ""||pass_wd == "") {
-                alert("Fill all the required fields");
-                return false;
-              }
-            }
-        </script>
-
+        <script src="login.js"></script>
     </head>
 <body>
     <link rel="stylesheet" href="login.css">
@@ -92,12 +82,14 @@
             <div class="title">SignIn</div>
         <div class="form">
             <form name="login" class="login">
-                <label><b>Username</b></label>
-                <input name="user" type="text" placeholder="Enter Username" /><br><br>
-                <label ><b>Password </b></label>
-                <input class="pass" name="passwd" type="password" placeholder="Password" /><br>
+                <label for="uname"><b>Username</b></label>
+                <input name="username" id="uname" type="text" placeholder="Username"><br><br>
+
+                <label for="pwsd"><b>Password</b></label>
+                <input name="password" id = "pwsd" type="text" placeholder="Password" /><br><br>
+
                 <span class="psw"> <a href="#">Forgot password?</a></span>
-                <button id="signinbutton" onclick="validateForm();"class="signin-btn">SignIn</button><br><br>
+                <button id="signinbutton" onclick= valid() class="signin-btn">SignIn</button><br><br>
                
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Stay signed in
