@@ -6,3 +6,12 @@ function validateForm() {
       return false;
     }
 }
+
+function myFunction() {
+  var ps = document.getElementById("pwsd");
+  if (ps.type === "password") {
+    ps.type = "text";
+  } else {
+    ps.type = "password";
+  }
+}
