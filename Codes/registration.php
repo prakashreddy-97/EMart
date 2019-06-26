@@ -40,6 +40,5 @@ if ($status){
         $reg = "INSERT INTO customer(firstname, lastname, emailid, password) values('".$firstname."', '".$lastname."', '".$emailid."', '".$password."');";
         mysqli_query($con, $reg);
         header('Refresh: 2; url=login.html');
-        //echo "Registration Successful. Now Login using Email and Password";
     }
 }
