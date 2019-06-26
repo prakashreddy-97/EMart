@@ -46,7 +46,8 @@ if ($status){
     $sol = mysqli_query($con, $query);
     $numberofrows = mysqli_num_rows($sol);
 
-    if ($numberofrows == 1) {           //if credentials match
+    if ($numberofrows == 1) {     
+        echo "Login Successful";      //if credentials match
         header('Location: emart.html');         // redirects to home page of emart
     } else {
         

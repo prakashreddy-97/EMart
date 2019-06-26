@@ -5,6 +5,7 @@ function validateForm() {
       alert("Fill all the required fields");
       return false;
     }
+    
 }
 
 function myFunction() {
