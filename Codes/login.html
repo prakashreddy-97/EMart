@@ -50,10 +50,10 @@
         <div class="form">
             <form name="login" class="login" onsubmit=" alert('Login Successful');" action="validation.php" method="POST">
                 <label for="uname"><b>Username</b></label>
-                <input name="username" id="uname" type="text" placeholder="Username"><br><br>
+                <input name="username" id="uname" type="text" placeholder="Username" required><br><br>
 
                 <label for="pwsd"><b>Password</b></label>
-                <input name="password" id = "pwsd" type="password" placeholder="Password" class="psclass" value=""/><br><br>
+                <input name="password" id = "pwsd" type="password" placeholder="Password" class="psclass" value="" required/><br><br>
                 <input type="checkbox" onclick= myFunction()>Show Password <br>
 
                 <span class="psw"> <a href="./forgot-password.html">Forgot password?</a></span>
