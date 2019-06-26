@@ -54,16 +54,15 @@
 
                 <label for="pwsd"><b>Password</b></label>
                 <input name="password" id = "pwsd" type="password" placeholder="Password" class="psclass" value="" required/><br><br>
-                <input type="checkbox" onclick= myFunction()>Show Password <br>
-
-                
+               <b> <input type="checkbox" onclick= myFunction()>Show Password </b><br>
+                <label>
+                     <input type="checkbox" checked="checked" name="remember">Stay signed in
+                </label><br>
                 <button id="signinbutton" onclick= validateForm() class="signin-btn">SignIn<a href="./homeAfterLogin.html" ></a></button><br><br>
                 <p style="text-align:center;"><span class="psw"> <a href="./forget-password.html">Forgot password?</a></span></p>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Stay signed in
-                </label><br>
-                New user?<button id="newuser" class="register-btn"> <a href="./register.html" id="newuser" style="color:white">Register</a> </button><br>  
-            </form>
+               
+                <p style="text-align:center;"> New user?<button id="newuser" class="register-btn"> <a href="./register.html" id="newuser" style="color:white">Register</a> </button><br>  
+            </p></form>
         </div>
     </div>
 </body>
