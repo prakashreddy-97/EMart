@@ -50,8 +50,10 @@
     </div>
     <div class="loginform">
             <div class="title">Register</div>
+          
         <div class="form">
-            <form class="registerform" action="registration.php" method="POST">
+                <form class="registerform" onsubmit=" alert('Registration Successful');" action="registration.php" method="POST">
+                
                 <label for="fname"><b>First Name</b></label>
                 <input name="firstname" id="fname" type="text" pattern="[A-Za-z]{1,}" placeholder="First Name" required><br><br>
 
@@ -67,7 +69,7 @@
                 <label for="cnfpwd" ><b>Confirm Password </b></label>
                 <input name="confirmpassword" id="cnfpd" type="password" pattern=".{8,}" placeholder="Confirm Password" title="Must be atleast 8 or more characters" required><input type="checkbox" onclick="myFunction()">Show Password<br><br>
 
-                <button id="registerbutton" class="register-btn" onclick= Validate() >Register</button><br><br>
+                <button id="registerbutton" class="register-btn" onclick=Validate() >Register</button><br><br>
 
                 Existing User?<button id="existingUser" class="signin-btn"><a href="./login.html" style="color:white">SignIn</a></button>
 

@@ -11,22 +11,19 @@ function Validate() {
     return;
   } else if (password != confirmPassword) {
     alert("Password and confirm password doesn't match");
-  } 
-  
-
-}
-    
-function myFunction() {
-  var conf_passwd = document.getElementById("cnfpd");
-  var passwd = document.getElementById("pd");
-  if (conf_passwd.type === "password") {
-    conf_passwd.type = "text";
-  } else {
-    conf_passwd.type = "password";
   }
-  if (passwd.type === "password") {
-    passwd.type = "text";
+}
+function myFunction() {
+  var x = document.getElementById("cnfpd");
+  var y = document.getElementById("pd");
+  if (x.type === "password") {
+    x.type = "text";
   } else {
-    passwd.type = "password";
+    x.type = "password";
+  }
+  if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
   }
 }
