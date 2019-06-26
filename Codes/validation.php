@@ -50,7 +50,7 @@ if ($status){
         header('Location: emart.html');         // redirects to home page of emart
     } else {
         
-       header('Refresh: 2; url=login.html');          //else, login page will open again
+        header('Refresh: 2; url=login.html');
        echo "Wrong Username or Password. Try Again.";
     }
 
