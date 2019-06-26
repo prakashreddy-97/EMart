@@ -1,5 +1,5 @@
 //PHP code for forgot password
-
+<?php
 if(isset($_POST) & !empty($_POST)){
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$sql = "SELECT * FROM `login` WHERE username = '$username'";
@@ -11,4 +11,6 @@ if(isset($_POST) & !empty($_POST)){
 		echo "User name does not exist in database";
 	}
 }
+
+?>
 
