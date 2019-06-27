@@ -85,3 +85,11 @@ input[type=text] {
     outline: none;
     border-radius: 5px;
   }
+
+  .loginbody{
+    background: #337ab7
+}
+#loginstyle{
+    background: white
+}
+
