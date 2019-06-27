@@ -52,7 +52,7 @@ if ($status){
     } else {
         
         header('Refresh: 2; url=login.html');
-       echo "Wrong Username or Password. Try Again.";
+      // echo "Wrong Username or Password. Try Again.";
     }
 
     ?>
