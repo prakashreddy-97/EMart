@@ -21,7 +21,24 @@ if(isset($_POST['register'])){
             exit();
         }
         //to avoid sql injections
-        
+        $firstname = $connect->real_escape_string($firstname);
+        $lastname = $connect->real_escape_string($lastname);
+        $password = $connect->real_escape_string($password);
+        $emailid = $connect->real_escape_string($emailid);
+        $confirmpassword = $connect->real_escape_string($confirmpassword);
+        //encryption of the verification key
+        $vkey = md5(time().$firstname.$lastname);
+        //encryption of the password
+        $password = md5($password);
+        //if the email exist in the database
+        $query = "select emailid from customer where emailid = '".$emailid."'";
+        $sol = mysqli_query($connect, $query);
+        $numberofrows = mysqli_num_rows($sol);
+        if ($numberofrows !== 0) {
+            header('Refresh: 2; url=register.html');
+            echo "EMail already exists. Try again";
+        } else {
+            //new registration
             $insert = "insert into customer(firstname, lastname, emailid, password, vkey) values ('".$firstname."','".$lastname."','".$emailid."','".$password."','".$vkey."')";
             echo($insert);
             mysqli_query($connect, $insert);
