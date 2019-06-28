@@ -1,43 +1,44 @@
-<<<<<<< HEAD
-<h2 class="form-signin-heading">Forgot Password</h2>
-        <div class="input-group">
-	  <span class="input-group-addon" id="basic-addon1">@</span>
-	  <input type="text" name="username" class="form-control" placeholder="Username" required>
-	</div>
-	<br />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Forgot Password</button>
-        <a class="btn btn-lg btn-primary btn-block" href="login.php">Login</a>
-      </form>
-=======
-//PHP code for forgot password
 <?php
-	if(!empty($_POST["forgot-password"])){
-		$conn = mysqli_connect("localhost", "root", "", "blog_samples");
-		
-		$condition = "";
-		if(!empty($_POST["user-login-name"])) 
-			$condition = " member_name = '" . $_POST["user-login-name"] . "'";
-		if(!empty($_POST["user-email"])) {
-			if(!empty($condition)) {
-				$condition = " and ";
-			}
-			$condition = " member_email = '" . $_POST["user-email"] . "'";
-		}
-		
-		if(!empty($condition)) {
-			$condition = " where " . $condition;
-		}
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
-		$sql = "Select * from members " . $condition;
-		$result = mysqli_query($conn,$sql);
-		$user = mysqli_fetch_array($result);
-		
-		if(!empty($user)) {
-			require_once("forgot-password-recovery-mail.php");
-		} else {
-			$error_message = 'No User Found';
-		}
-	}
-?>
+if(isset($_POST["emailid"])){
+$emailTo = $_POST["emailid"];
+$mail = new PHPMailer(true);
 
->>>>>>> 893ab128786ad9870ddbd1752fd9f3cf7fdb04e5
+try {
+    //Server settings
+  
+    $mail->isSMTP();                                            // Set mailer to use SMTP
+    $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'emart.ecommercesite@gmail.com';                     // SMTP username
+    $mail->Password   = 'St@rk_Tech7';                               // SMTP password
+    $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+    $mail->Port       = 587;                                    // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom('emart.ecommercesite@gmail.com', 'Emart Support');
+    $mail->addAddress($emailTo);     // Add a recipient
+
+    $mail->addReplyTo('no-reply@gmail.com', 'No reply');
+    
+
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Reset Password';
+    $mail->Body    = ' ';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+}
