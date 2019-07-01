@@ -37,7 +37,7 @@ try {
     $mail->send();
     echo 'A link to reset your password has been sent to your email';
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Message cannot   be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 exit();
 }
