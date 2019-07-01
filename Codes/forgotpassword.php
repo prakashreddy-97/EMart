@@ -1,6 +1,6 @@
 <?php
 // Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
+// These should be present at the top not inside the function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/src/Exception.php';
