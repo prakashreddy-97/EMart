@@ -35,9 +35,9 @@ try {
     $mail->Subject = 'Reset Password';
     $mail->Body    = '<a href = "http://localhost/EMart/Codes/passwordReset.html" >Click here</a>';
     $mail->send();
-    echo 'A link to reset your password has been sent to your email';
+    echo "<script>alert('A link to reset your password has been sent to your email');</script>";
 } catch (Exception $e) {
-    echo "Message cannot   be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "<script>alert(Message cannot   be sent. Mailer Error: {$mail->ErrorInfo});</script>";
 }
 exit();
 }
