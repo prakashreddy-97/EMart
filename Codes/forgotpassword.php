@@ -33,7 +33,7 @@ try {
     // Content
     $mail->isHTML(true);                              
     $mail->Subject = 'Reset Password';
-    $mail->Body    = 'Hey';
+    $mail->Body    = '<a href = "http://localhost/EMart/Codes/passwordReset.html" >Click here</a>';
     $mail->send();
     echo 'A link to reset your password has been sent to your email';
 } catch (Exception $e) {
