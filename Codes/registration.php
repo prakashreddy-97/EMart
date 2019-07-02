@@ -22,7 +22,7 @@ if(isset($_POST['register'])){
     }
     else{
         $connect = mysqli_connect('localhost','root','','emart');
-        echo("Connected");
+        echo("Connected..");
         if (!$connect) {
             echo "<p style='color: red;'>Error connecting to database: </p>" .mysqli_error($connect);
             exit();
@@ -76,7 +76,7 @@ if(isset($_POST['register'])){
                 catch (Exception $e) {
                     echo "Message cannot   be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
-              echo "hi";
+             
                         
                              
             }
