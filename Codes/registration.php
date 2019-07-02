@@ -51,7 +51,30 @@ if(isset($_POST['register'])){
             mysqli_query($connect, $insert);
             // if insert successfull send the email to the dedicated email id.
             if($insert){   
-                
+                try {
+                    $mail->isSMTP();                                            
+                    $mail->Host       = 'smtp.gmail.com';  
+                    $mail->SMTPAuth   = true;                                  
+                    $mail->Username   = 'emart.ecommercesite@gmail.com';              
+                    $mail->Password   = 'St@rk_Tech7';                              
+                    $mail->SMTPSecure = 'tls';                                 
+                    $mail->Port       = 587;                                    
+                     //Recipients
+                    $mail->setFrom('emart.ecommercesite@gmail.com', 'Emart Support');
+                    $mail->addAddress($emailid);     
+                    $mail->addReplyTo('no-reply@gmail.com', 'No reply');
+                    // Content
+                    $mail->isHTML(true);                              
+                    $mail->Subject = 'Email Verification';
+                    $mail->Body    = $vkey;
+                    $mail->send();
+                    echo 'A link to verify your email id has been sent';
+                    header('Refresh: 2; url=validateEmail.html');
+                } 
+                catch (Exception $e) {
+                    echo "Message cannot   be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+                exit();
                         
                              
             }
