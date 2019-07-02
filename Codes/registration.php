@@ -47,7 +47,9 @@ if(isset($_POST['register'])){
     
         } else {
             //new registration
+            
             $insert = "insert into customer(firstname, lastname, emailid, password, vkey) values ('".$firstname."','".$lastname."','".$emailid."','".$password."','".$vkey."')";
+            
             mysqli_query($connect, $insert);
             // if insert successfull send the email to the dedicated email id.
             if($insert){   
@@ -74,7 +76,7 @@ if(isset($_POST['register'])){
                 catch (Exception $e) {
                     echo "Message cannot   be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
-                exit();
+              echo "hi";
                         
                              
             }

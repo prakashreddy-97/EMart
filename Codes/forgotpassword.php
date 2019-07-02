@@ -31,8 +31,8 @@ if(isset($_POST["emailid"]))
  
 
     if ($numberofrows < 1) {     
-		echo "<script>alert(' User With This Email Does Not Exit');</script>";
-       // header('Location: forget-password.html');         // redirects to home page of emart
+        echo "<script>alert(' User With This Email Does Not Exit');</script>";
+       header('Refresh: 1; url=forget-password.html');         
 	}
     else
     {
