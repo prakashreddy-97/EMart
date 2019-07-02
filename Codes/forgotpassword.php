@@ -30,7 +30,6 @@ if(isset($_POST["emailid"]))
     $numberofrows = mysqli_num_rows($sol);
  
 
-
     if ($numberofrows < 1) {     
 		echo "<script>alert(' User With This Email Does Not Exit');</script>";
        // header('Location: forget-password.html');         // redirects to home page of emart

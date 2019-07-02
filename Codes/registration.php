@@ -31,6 +31,7 @@ if(isset($_POST['register'])){
         //encryption of the password
         //$password = md5($password);
         $password = sha1($password);
+        
         //if the email exist in the database
         $query = "select emailid from customer where emailid = '".$emailid."'";
         $sol = mysqli_query($connect, $query);

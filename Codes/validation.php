@@ -9,6 +9,7 @@
 $username = $_POST['username'];
 $password = sha1($_POST['password']);
 
+
 $status = true;
 
 if($username == "" || $password == "")
