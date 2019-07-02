@@ -7,7 +7,7 @@
 
 // Passing the input values
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 
 
 $status = true;
@@ -50,7 +50,7 @@ if ($status){
         echo "Login Successful";      //if credentials match
         header('Location: emart.html');         // redirects to home page of emart
     } else {
-        
+       echo "<script>alert('invalid password')</script>";
         header('Refresh: 2; url=login.html');
       // echo "Wrong Username or Password. Try Again.";
     }
