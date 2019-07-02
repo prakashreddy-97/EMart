@@ -47,10 +47,13 @@
     <div class="validateEmailform"><br>
         <div class="title">Verification Code</div>
         <div class="form"><br>
-        
-             <b><p style="text-align:center;"> Check your email for verification code</p></b>
-            <input name="validateemail" id="vemail" type="text" placeholder="Enter the code" required><br><br>
-            <button id="submitbutton" onclick= validateForm() class="submit-btn">Submit</button><br><br>
+            <form class="registerform" action="verify.php" method="POST">
+            <b><p style="text-align:center;"> Enter the Email id</p></b>
+            <input name="verifyemail" id="verifyemail" type="email" placeholder="Enter the email address" required><br><br>
+            <b><p style="text-align:center;"> Check your email for verification code</p></b>
+            <input name="validateemail" id="vemail" type="number" placeholder="Enter the code" required><br><br>
+            <button id="submitbutton" name = "submit" onclick= validateForm() class="submit-btn">Submit</button><br><br>
+            </form>
     </div>
 </div>
 </body>
