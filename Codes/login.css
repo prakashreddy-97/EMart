@@ -1,12 +1,12 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    background: white;
+    background-image: linear-gradient(to bottom,white, black);
 }
 .title{
     padding-top: 10px;
     text-align:center;
     font-size: 36px;
-    color: black;
+   /* color: rgb(255, 255, 255); */
 }
 
 .loginform{    
@@ -18,12 +18,13 @@ body{
     left: 50%;
     bottom: 10%;
     transform: translateX(-50%) translateY(-50%);
-    background:rgba(255, 255, 255, 0.5);
+    background: rgb(60, 143, 132);
     padding: 5px 10px;
     border-radius: 4px;
     scroll-padding-bottom: 5px;
     border: 1px solid black;
     box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
+    color:  rgb(8, 0, 0);
     }
 
     .pass{
@@ -39,7 +40,7 @@ body{
     cursor: pointer;
     float: right;
     text-align: center;
-    background-color: rgba(0, 0, 255, 0.733);
+    background-color: rgba(51, 51, 168, 0.733);
     color: white;
     margin: 0 180;   
 }
@@ -86,12 +87,6 @@ input[type=text] {
     border-radius: 5px;
   }
 
-.loginbody{
-    background: white
-}
 
-#loginstyle{
-    background: white
-}
 
 

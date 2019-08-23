@@ -7,7 +7,6 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 $mail = new PHPMailer(true);
-// Passing the input values
 $error = Null;
 if(isset($_POST['reset'])){
     $emailid = $_POST['emailid'];
@@ -18,9 +17,9 @@ if(isset($_POST['reset'])){
     if($password != $confirmpassword){
         $error = "<p>Passwords don't Match</p>";
     }
-    else{
+    // else{
         $connect = mysqli_connect('localhost','root','','emart');
-        echo("Connected");
+        // echo("Connected");
         if (!$connect) {
             echo "<p style='color: red;'>Error connecting to database: </p>" .mysqli_error($connect);
             exit();
@@ -35,6 +34,10 @@ if(isset($_POST['reset'])){
         $update = "update customer set password = '".$password."' where emailid = '".$emailid."'";
         // echo($update)
         mysqli_query($connect, $update);
+
+        header('Refresh: 2; url=login.html');
+
+
 
         if($update){
             try {
@@ -54,7 +57,7 @@ if(isset($_POST['reset'])){
                 $mail->Subject = 'Change of Password';
                 $mail->Body    = "Your password has been updated";
                 $mail->send();
-                echo 'A link to verify your email id has been sent';
+                echo 'Your password is changed';
                 header('Refresh: 2; url=login.html');
             } 
             catch (Exception $e) {
@@ -67,6 +70,6 @@ if(isset($_POST['reset'])){
                 echo $connect->error;
             }     
         }
-    }
+    
 
 ?>
