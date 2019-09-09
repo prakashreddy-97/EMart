@@ -38,4 +38,10 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
           }
+
+          button{
+            color: #111;
+            margin-top: 25px;
+            margin-left: 50px;
+          }
         
