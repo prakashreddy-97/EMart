@@ -118,4 +118,10 @@
               text-align: left;
             }
           }
+
+          button{
+            color: #111;
+            margin-top: 25px;
+            margin-left: 50px;
+          }
         
