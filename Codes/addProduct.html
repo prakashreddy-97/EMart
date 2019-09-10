@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="adminhome.css">
+    <link rel="stylesheet" href="addproduct.css">
 
 </head>
 
@@ -64,11 +65,15 @@
     </div>
     <div class="addForm">
         <form>
-            <label for="ProductName"><b>Product Name: </b></label>
+            <label for="ProductName"><b>Product Name: </b>
             <input name="producName" id="pName" type="text" pattern="[A-Za-z]{1,}" placeholder="ProductName"
                 required><br><br>
+            </label>
+            <br>
             <label for="Description"><b>Description: </b></label>
             <textarea rows="10" cols="70" name="description" required>Enter Description here...</textarea>
+            <br>
+            <br>    
 
             <label for="category"><b>Category:</b></label>
             <select name="dropdown">
@@ -82,8 +87,14 @@
                 <option value="smartHome" >SmartHome</option>
                 <option value="officeElectronics" >OfficeElectronics</option>
             </select>
-            <label for="price"><b>Price: </b></label>
-            <input name="price" type="number" pattern="^\d*(\.\d{0,2})?$" placeholder="Price" required><br><br>
+            <br>
+            <br>
+            <label for="price"><b>Price: </b>
+            
+                <input name="price" type="number" pattern="^\d*(\.\d{0,2})?$" placeholder="Price" required><br><br>
+
+            </label>
+           
             <input name="imageUpload" type="file" accept="image/*" required><br><br>
             <input type="submit" name="submit" value="Submit" />
             <input type="reset" name="reset" value="Reset" />
