@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="sidenav">
+    <!-- <div class="sidenav">
         <br>
         <br>
 
@@ -29,7 +29,7 @@
         <a href="#contact">Smart Home, Security & Wi-Fi</a>
         <a href="#contact">Drones, Toys</a>
         <a href="#contact">Wearable Technology</a>
-    </div>
+    </div> -->
 
     <div class="main">
         <h5>Sidebar</h5>
@@ -64,14 +64,14 @@
         </nav>
     </div>
     <div class="addForm">
-        <form>
+        <form class="addProductForm" action="addProduct.php" method="POST">
             <label for="ProductName"><b>Product Name: </b>
-            <input name="producName" id="pName" type="text" pattern="[A-Za-z]{1,}" placeholder="ProductName"
+            <input name="productName" id="pName" type="text" pattern="[A-Za-z]{1,}" placeholder="ProductName"
                 required><br><br>
             </label>
             <br>
             <label for="Description"><b>Description: </b></label>
-            <textarea rows="10" cols="70" name="description" required>Enter Description here...</textarea>
+            <textarea rows="10" cols="70" name="description" required placeholder="Enter Description here..."></textarea>
             <br>
             <br>    
 
