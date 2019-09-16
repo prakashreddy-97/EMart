@@ -57,31 +57,48 @@ body {
   color:black;
 }
 .quantity {
-  padding-top: 30px;
-  margin-right: 50px;
+ 
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 25px;
 }
-.quantity input {
-  border: none;
-  text-align: center;
-  width: 30px;
-  font-size: 14px;
-  color: #43484D;
-  font-weight: 300;
+
+.value-button{
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+   
+  }
+  
+  input#number, input#number1, input#number2 {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 30px;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-button[class*=btn] {
-  width: 30px;
-  height: 30px;
-  background-color: #E1E8EE;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
+#minus-btn{
+  padding-top: 5px;
 }
-.minus-btn img {
-  margin-top: 2px;
+#plus-btn{
+  padding-top: 5px;
 }
-.plus-btn img {
-  margin-top: 2px;
-}
+
+
 .order-summary {
   width: 300px;
   height: 450px;
