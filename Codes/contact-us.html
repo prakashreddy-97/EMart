@@ -1,0 +1,103 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>EMart Contact Us</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <script src="login.js"></script>
+   </head>
+   <body class="loginbody">
+      <link rel="stylesheet" href="contactus.css">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <li>
+                     <img src = "./images/logo.jpg" height="45" width="40" />
+                  </li>
+                  <li>
+                     <a href="./emart.html">EMart</a>
+                  </li>
+                  <li>
+                     <a href="./mycart.html">MyCart</a>
+                  </li>
+                  <li>
+                     <a href="./login.html">SignIn</a>
+                  </li>
+                  <li>
+                     <a href="./register.html">Register</a>
+                  </li>
+                  <li>
+                     <a href="./contact-us.html">Contact Us</a>
+                  </li>
+                  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                     <div class="container">
+                        <div class="navbar-header">
+                           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                              aria-expanded="false" aria-controls="navbar">
+                           <span class="sr-only">Toggle navigation</span>
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span>
+                           </button>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                           <ul class="nav navbar-nav">
+                              <li>
+                                 <img src = "./images/logo.jpg" height="45" width="40" />
+                              </li>
+                              <li>
+                                 <a href="./emart.html">EMart</a>
+                              </li>
+                              <li>
+                                 <a href="./mycart.html">MyCart</a>
+                              </li>
+                              <li>
+                                 <a href="./login.html">SignIn</a>
+                              </li>
+                              <li>
+                                 <a href="./register.html">Register</a>
+                              </li>
+                              <li>
+                                 <a href="./contact-us.html">Contact Us</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </nav>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div id="loginstyle"class="loginform">
+         <div class="title">Contact Us</div>
+         <div class="form">
+            <form name="contact-us" class="login"  action="validation.php" method="POST">
+                <label for="name">Name</label>
+                <input name="name" id="name" type="text"  placeholder="Name" required>
+               <label for="emailId">Email Address</label>
+               <input name="emailId" id="emailId" type="text" onfocusout="ValidateEmail()"  placeholder="Email Address" required>
+               <label for="mobileNumber">Mobile Number</label>
+               <input name="mobileNumber" id = "pwsd" type="text" placeholder="Mobile Number" class="psclass" value="" required/>
+               <label for="sub">Subject</label>
+               <input name="sub" id = "sub" type="text" placeholder="Subject" class="psclass" value="" required/>
+               <label for="msg">Message</label>
+               <!-- <input name="msg" id = "msg" type="text" placeholder="Message" class="psclass" value="" required/> -->
+               <textarea name="msg" id = "msg" cols="50" rows="3" maxlength="10" class="psclass" value="" placeholder="Type your Message Here...." tabindex="5" required></textarea>
+               <button id="submitbutton" onclick= validateForm() class="signin-btn">Submit</button>
+            </form>
+         </div>
+      </div>
+   </body>
+</html>

@@ -7,7 +7,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="mycart.css">
-      <!--<script src="mycart.js"></script>-->       
+    <script src="mycart.js"></script>     
    </head>
    <body>
       <div class="container">
@@ -72,7 +72,7 @@
             <div class="item">
                <div class="buttons">
                   <span class="delete-btn"></span>
-                  <li><img src = "./Images/delete.png" height="20" width="20" /></li>
+                  <li><img src = "./Images/delete.png" height="20" width="20" onclick="image()" /></li>
                </div>
                <div class="image">
                   <li><img src = "./Images/iphone.jpg" height="50" width="40" /></li>
@@ -80,17 +80,21 @@
                <div class="description">
                   <span>Phone</span>
                </div>
-               <div class="quantity">
-                  <button type="button">+</button>
-                  <input type="text" name="name" value="1">
-                  <button type="button">-</button>
-               </div>
+               <div class="quantity">  
+                  <div class="value-button" id="minus-btn" onclick="decreaseValue()" value="Decrease Value">-</div>
+     <input type="number" id="number" value="0" />
+     <div class="value-button" id="plus-btn" onclick="increaseValue()" value="Increase Value">+</div>
+   
+   </div>
                <div class="total-price">$549</div>
             </div>
+         
+      
             <div class="item">
                <div class="buttons">
                   <span class="delete-btn"></span>
                   <li><img src = "./Images/delete.png" height="20" width="20" /></li>
+                  
                </div>
                <div class="image">
                   <li><img src = "./Images/shoe.png" height="50" width="40" /></li>
@@ -98,11 +102,12 @@
                <div class="description">
                   <span>Shoe</span>
                </div>
-               <div class="quantity">
-                  <button type="button">+</button>
-                  <input type="text" name="name" value="1">
-                  <button type="button">-</button>
-               </div>
+               <div class="quantity">  
+                  <div class="value-button" id="minus-btn" onclick="decreaseValue()" value="Decrease Value">-</div>
+     <input type="number" id="number" value="0" />
+     <div class="value-button" id="plus-btn" onclick="increaseValue()" value="Increase Value">+</div>
+   
+   </div>
                <div class="total-price">$870</div>
             </div>
             <div class="item">
@@ -115,12 +120,14 @@
                </div>
                <div class="description">
                   <span>Dress</span>
-               </div>
-               <div class="quantity">
-                  <button type="button">+</button>
-                  <input type="text" name="name" value="1">
-                  <button type="button">-</button>
-               </div>
+               </div> 
+         
+               <div class="quantity">  
+               <div class="value-button" id="minus-btn" onclick="decreaseValue()" value="Decrease Value">-</div>
+  <input type="number" id="number" value="0" />
+  <div class="value-button" id="plus-btn" onclick="increaseValue()" value="Increase Value">+</div>
+</div>
+
                <div class="total-price">$349</div>
             </div>
          </div>

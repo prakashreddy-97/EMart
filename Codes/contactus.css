@@ -1,0 +1,99 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(to bottom,white, black);
+}
+.title{
+    /* padding-top: 10px; */
+    text-align:center;
+    font-size: 36px;
+   /* color: rgb(255, 255, 255); */
+}
+.login label{
+  margin: 8px 0;
+}
+
+.loginform{
+    /* border: 3px solid #f1f1f1; */
+    height: 550px;
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgb(60, 143, 132);
+    padding: 0px 10px;
+    border-radius: 4px;
+    scroll-padding-bottom: 5px;
+    border: 1px solid black;
+    box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
+    color:  rgb(8, 0, 0);
+    }
+
+    /* .pass{
+        padding: 5px 10px;
+        border-radius: 4px;
+    } */
+.form textarea {
+  width: 100%;
+  padding: 6px 6px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+  border-radius: 5px;
+}
+.signin-btn{
+    border: none;
+    width: 65px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    text-align: center;
+    background-color: rgba(51, 51, 168, 0.733);
+    color: white;
+    margin: 0 180;
+}
+
+.register-btn{
+    border: none;
+    width: 65px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.733);
+    color: white;
+    margin: 10;
+}
+
+
+.register-btn:hover{
+    opacity: 0.5;
+
+}
+
+.signin-btn:hover{
+    opacity: 0.5;
+
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 6px 6px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 0 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    border-radius: 5px;
+  }
