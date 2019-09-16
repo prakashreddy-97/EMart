@@ -16,7 +16,7 @@ if ($conn->connect_error) {
         $category = $_POST['dropdown'];
         $price = $_POST['price'];
         $image = $_POST['imageUpload'];    
-        $insert = "insert into product(productname, productdescription, categoryid, price , image) values ('".$pName."','".$description."','".$category."','".$price."','".$image."')";
+        $insert = "insert into product(productname, productdescription, category, price , image) values ('".$pName."','".$description."','".$category."','".$price."','".$image."')";
         mysqli_query($conn, $insert);
         $success = "true";
     }
