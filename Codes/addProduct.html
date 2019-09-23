@@ -53,7 +53,7 @@
                     <ul class="nav navbar-nav">
                         <li><img src="./Images/logo.jpg" height="45" width="40" /></li>
                         <li><a href="./emart.html">EMart</a></li>
-                        <li><a href="./mycart.html">MyCart</a> </li>
+                        <li><a href="./adminhome.html">Admin</a></li>
                     </ul>
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="./login.html">Logout</a></li>
@@ -71,12 +71,13 @@
             </label>
             <br>
             <label for="Description"><b>Description: </b></label>
-            <textarea rows="10" cols="70" name="description" required placeholder="Enter Description here..."></textarea>
+            <textarea rows="10" cols="57" name="description" required placeholder="Enter Description here..."></textarea>
             <br>
             <br>    
 
             <label for="category"><b>Category:</b></label>
             <select name="dropdown">
+                    <option value="select">Select one</option>
                 <option value="tablets">Tablets</option>
                 <option value="speakers" >Speakers</option>
                 <option value="mobilesAndAccessories" >Mobiles & Accessories</option>
@@ -89,16 +90,17 @@
             </select>
             <br>
             <br>
-            <label for="price"><b>Price: </b>
+            <label for="price" pattern = "{1,}"><b>Price: </b>
             
-                <input name="price" type="number" pattern="^\d*(\.\d{0,2})?$" placeholder="Price" required><br><br>
+                <input name="price" type="number" placeholder="Price" required><br><br>
 
             </label>
-           
-            <input name="imageUpload" type="file" accept="image/*" required><br><br>
-            <input type="submit" name="submit" value="Submit" />
-            <input type="reset" name="reset" value="Reset" />
-            
+          
+            <input name="imageUpload" type="file" accept="image/*" required><br>
+            <input type="submit" name = "submit" class="button" value="Submit" />
+            <input type="reset" name = "reset" class="button" value="Reset">
+            <a href="./adminhome.html" ><input type="button" class="button" value="Cancel" ></a>
+
         </form>
     </div>
 </body>
