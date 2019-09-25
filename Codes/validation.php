@@ -37,7 +37,7 @@ if ($status){
     $numberofrows = mysqli_num_rows($sol);
     if ($numberofrows == 1) {     
         echo "Login Successful";    //if credentials match
-       // $_SESSION['status'] = "Active";
+      
         header('Location: emart.html');         // redirects to home page of emart
     } else {       
         header('Refresh: 2; url=login.html');
