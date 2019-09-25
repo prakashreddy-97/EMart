@@ -15,6 +15,7 @@ if($username == "" || $password == "")
 <title><?php
 if ($status){
     echo "Welcome to EMart";
+    
 } else {
     echo "EMart Login";
 }
@@ -35,7 +36,8 @@ if ($status){
     $sol = mysqli_query($con, $query);
     $numberofrows = mysqli_num_rows($sol);
     if ($numberofrows == 1) {     
-        echo "Login Successful";      //if credentials match
+        echo "Login Successful";    //if credentials match
+      
         header('Location: emart.html');         // redirects to home page of emart
     } else {       
         header('Refresh: 2; url=login.html');
