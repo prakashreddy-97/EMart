@@ -45,4 +45,24 @@ $stmt=$connection->prepare($query);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
 
+if($stmt->execute()){
+    $elements['msg'].= "Records added : ".$connection->affected_rows;
+    $elements['msg'].= "<br>Product ID : ".$connection->insert_id;
+    }else{
+    $elements['validation_status']="F";		
+    $elements['msg'].="Database error : ". $connection->error;
+    }
+    }else{
+    $elements['validation_status']="F";		
+    $elements['msg'].="Database error : ". $connection->error;
+    }
+    // End of insert record with file name ///
+    }else{ // file upload by move_uploaded_file
+    $elements['msg'].="Failed to upload file Contact Site admin to fix the problem";
+    $elements['validation_status']="F";	
+    }// file upload by move_uploaded_file
+    
+    }// if validation_status is equal to T	 
+    
+    echo json_encode($elements);
 ?>
