@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS `laptops` (
+  `p_id` int(3) NOT NULL AUTO_INCREMENT,
+  `p_name` varchar(100) NOT NULL,
+  `price` decimal(5,2) NOT NULL,
+  `img` varchar(50) NOT NULL,
+  UNIQUE KEY `p_id` (`p_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `laptops`
+--
+
+INSERT INTO `laptops` (`p_id`, `p_name`, `price`, `img`) VALUES
+(1, 'Rose', '20.34', 'rose.jpg'),
+(2, 'Dragon Fly', '12.45', 'dragon-fly.jpg'),
+(3, 'Butter Fly', '22.34', 'butterfly.jpg'),
+(4, 'Anchor', '20.12', 'anchor.jpg');
