@@ -36,9 +36,9 @@ if ($status){
     $numberofrows = mysqli_num_rows($sol);
     if ($numberofrows == 1) {     
         echo "Login Successful";      //if credentials match
-        header('Location: homeAfterlogin.html');         // redirects to home page of emart
+        header('Location: adminhome.html');         // redirects to home page of emart
     } else {       
-        header('Refresh: 2; url=login.html');
+        header('Refresh: 2; url=adminlogin.html');
        echo "Wrong Username or Password. Try Again.";
     }
 ?>
