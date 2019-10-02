@@ -4,7 +4,7 @@ $price=$_POST['price'];
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
-if(!filter_var($price,FILTER_VALIDATE_INT)){
+if(!filter_var($price,FILTER_VALIDATE_INT,FILTER_VALIDATE_FLOAT)){
 $elements['msg'].=" Enter Price details <br>";	
 $elements['validation_status']="F";
 }
