@@ -5,7 +5,7 @@ $description=$_POST['description'];
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
-if(!filter_var($price,FILTER_VALIDATE_FLOAT)){
+if(!filter_var($price,FILTER_VALIDATE_INT)){
 $elements['msg'].=" Enter Price details <br>";	
 $elements['validation_status']="F";
 }
@@ -24,8 +24,8 @@ $elements['validation_status']="F";
 }
 
 // Check file size 
-if ($_FILES[file_up][size]>250000){
-$elements['msg'].="Your uploaded file size is more than 250KB ";
+if ($_FILES[file_up][size]>1000000){
+$elements['msg'].="Your uploaded file size is more than 1MB ";
 $elements['msg'].=" so please reduce the file size and then upload.<BR>";
 $elements['validation_status']="F";	
 }
