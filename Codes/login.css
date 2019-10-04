@@ -1,6 +1,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    background-image: linear-gradient(to bottom,white, black);
+    background-image: url(images/bckground.jpg);
+    background-size: 900px 700px;
 }
 .title{
     padding-top: 10px;
