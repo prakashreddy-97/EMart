@@ -1,10 +1,11 @@
 <?Php
 $p_name=$_POST['p_name'];
 $price=$_POST['price'];
+$description=$_POST['description'];
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
-if(!filter_var($price,FILTER_VALIDATE_INT,FILTER_VALIDATE_FLOAT)){
+if(!filter_var($price,FILTER_VALIDATE_INT)){
 $elements['msg'].=" Enter Price details <br>";	
 $elements['validation_status']="F";
 }
@@ -40,13 +41,12 @@ if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
-$query="INSERT INTO tablets (p_name,price,img) values('$p_name','$price','$file_name')";
+$query="INSERT INTO tablets (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
 $stmt=$connection->prepare($query);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
 if($stmt->execute()){
 $elements['msg'].= "Records added : ".$connection->affected_rows;
-echo("Success");
 $elements['msg'].= "<br>Product ID : ".$connection->insert_id;
 }else{
 $elements['validation_status']="F";		

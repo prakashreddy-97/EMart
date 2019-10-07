@@ -15,3 +15,23 @@ INSERT INTO `tablets` (`p_id`, `p_name`, `price`, `img`) VALUES
 (2, 'Dragon Fly', '12.45', 'dragon-fly.jpg'),
 (3, 'Butter Fly', '22.34', 'butterfly.jpg'),
 (4, 'Anchor', '20.12', 'anchor.jpg');
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> bce8fe6b24f50584c9bdc9837d4b523f159aaaa3

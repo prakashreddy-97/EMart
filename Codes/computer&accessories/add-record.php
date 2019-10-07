@@ -38,6 +38,11 @@ echo "
 </div>
 <br>
 <div class='row'>
+  <div class='col-sm-2 offset-sm-3'>Description </div>
+  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=description placeholder='Description...'></div>
+</div>
+<br>
+<div class='row'>
   <div class='col-sm-2 offset-sm-3'>Upload file(Image size should be less than 250kb)</div>
   <div class='col-sm-4'><input type=file name='file_up'></div>
 </div>

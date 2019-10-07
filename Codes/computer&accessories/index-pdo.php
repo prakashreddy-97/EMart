@@ -27,7 +27,7 @@ echo "<table class='table my_table'>
 
 foreach ($dbo->query($q) as $row) {
 echo "<tr><td><img src=images/$row[img] class='square' alt='$row[p_name]'></td>
-<td>$row[p_name]</td><td>$row[p_id]</td><td>$row[price] </td></tr>";
+<td>$row[p_name]</td><td>$row[p_id]</td><td>$row[price] </td><td>$row[description] </td></tr>";
   }
 echo "</table>";
 
