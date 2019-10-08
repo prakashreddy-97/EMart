@@ -1,3 +1,4 @@
+
 <?Php
 echo "<!doctype html>
 <html lang='en'>
@@ -50,7 +51,7 @@ echo "
 <br>
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'></div>
-  <div class='col-sm-4'><button>Submit</button></FORM></div>
+  <div class='col-sm-4'><button  onclick=\"popUp();\"> Submit </button></Form></div>
 </div>
 
 ";
@@ -61,8 +62,12 @@ require "templates/bottom.php";
 ?>
 
 <script>
+  function popUp(){
+ alert("Product added")
+}
+
 $(document).ready(function() {
-/////////// form submission//
+
 $("form#data").submit(function(e) {
  e.preventDefault();    
  var formData = new FormData(this);
@@ -72,20 +77,23 @@ $("form#data").submit(function(e) {
   data: formData,
   dataType: 'json',
   success: function (return_data) {
-   if(return_data.validation_status=='T'){
-	$('form#data').trigger("reset");
+  if(return_data.validation_status=='F'){
+	$("form#data").trigger("reset");
    }
   $("#msg_display").html(return_data.msg);     
   $("#msg_display").show();
-  setTimeout(function() { $("#msg_display").fadeOut('slow'); }, 4000);
+  setTimeout(function() {$("#msg_display").fadeOut('slow');}, 4000);
      },
    cache: false,
    contentType: false,
    processData: false
   });
+  
 });
-////
+
 })
+
 </script>
+
 </body>
 </html>

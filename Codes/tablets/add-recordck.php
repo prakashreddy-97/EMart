@@ -1,3 +1,4 @@
+
 <?Php
 $p_name=$_POST['p_name'];
 $price=$_POST['price'];
@@ -6,7 +7,7 @@ $unique_id = substr($p_name,0,3).rand(1,999);
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
-if(!filter_var($price,FILTER_VALIDATE_INT)){
+if(!filter_var($price,FILTER_VALIDATE_FLOAT)){
 $elements['msg'].=" Enter Price details <br>";	
 $elements['validation_status']="F";
 }
@@ -31,7 +32,7 @@ $elements['msg'].=" so please reduce the file size and then upload.<BR>";
 $elements['validation_status']="F";	
 }
 
-$file_name=$_FILES[file_up][name];// 
+$file_name=$_FILES[file_up][name];
 
 
 if($elements['validation_status']=="T"){
@@ -49,6 +50,8 @@ $stmt->bind_param("ss", $p_name,$file_name);
 if($stmt->execute()){
 $elements['msg'].= "Records added : ".$connection->affected_rows;
 $elements['msg'].= "<br>Product ID : ".$connection->insert_id;
+
+
 }else{
 $elements['validation_status']="F";		
 $elements['msg'].="Database error : ". $connection->error;
