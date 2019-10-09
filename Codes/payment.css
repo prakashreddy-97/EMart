@@ -6,6 +6,17 @@
   margin: 0 -16px;
 }
 
+#navbar{
+  background-color: black;
+  color: white;
+}
+
+.title{
+  padding-top: 10px;
+  text-align:center;
+  font-size: 36px;
+}
+
 .col-25 {
   -ms-flex: 25%; /* IE10 */
   flex: 25%;
@@ -20,7 +31,6 @@
   -ms-flex: 75%; /* IE10 */
   flex: 75%;
 }
-
 
 .col-25,
 .col-50,
@@ -83,81 +93,6 @@ span.price {
   .col-25 {
     margin-bottom: 20px;
   }
-}body{
-  font-family: 'Montserrat', sans-serif;
-  background: white;
-}
-.title{
-  padding-top: 1px;
-  text-align:center;
-  font-size: 30px;
-  color: black;
-}
-text{
-  color: black;
-}
 
-.btn{
-  border: none;
-  outline: none;
-  width: 400px;
-  height: 35px;
-  border-radius: 5px;
-  cursor: pointer;
-  float: right;
-  background-color: rgba(0, 0, 255, 0.733);
-  color: white;
-  border-radius: 4px;
-  margin: 10 150;
   
-}
-
-
-#existingUser{
-  border: none;
-  width: 65px;
-  height: 25px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 255, 0.733);
-  color: white;
-  margin: 5;
-}
-
-#existingUser:hover{
-  opacity: 0.5;
-  background-color: rgba(0, 0, 255, 0.733)
-}
-
-.btn:hover{
-  opacity: 0.5;
-}
-
-input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-  border-radius: 5px;
-}
-
-input[type="email"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-  border-radius: 5px;
-}
-input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-  border-radius: 5px;
 }
