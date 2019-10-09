@@ -16,7 +16,7 @@ body{
 
 .loginform{
     /* border: 3px solid #f1f1f1; */
-    height: 550px;
+    height: 500px;
     width: 450px;
     position: absolute;
     top: 50%;
@@ -24,8 +24,8 @@ body{
     bottom: 10%;
     transform: translateX(-50%) translateY(-50%);
     background: white;
-    padding: 0px 10px;
-    border-radius: 4px;
+    padding: 10px 10px;
+    border-radius: 10px;
     scroll-padding-bottom: 5px;
     border: 1px solid black;
     box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
@@ -53,9 +53,9 @@ body{
     cursor: pointer;
     float: right;
     text-align: center;
-    background-color: rgba(51, 51, 168, 0.733);
+    background-color: blue;
     color: white;
-    margin: 0 180;
+    margin: 20 180;
 }
 
 .register-btn{
