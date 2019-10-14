@@ -67,16 +67,17 @@
                 <input name="password" id="pd" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" title="Must be atleast 8 or less than 20 characters. Should have a special character. should have atleast one uppercase value" required><br><br>
                 
                 <label for="cnfpwd" ><b>Confirm Password </b></label>
-                <input name="confirmpassword" id="cnfpd" type="password" pattern=".{8,}" placeholder="Confirm Password" title="Must be atleast 8 or more characters" required><input type="checkbox" onclick="myFunction()">Show Password<br><br>
+                <input name="confirmpassword" id="cnfpd" type="password" pattern=".{8,}" placeholder="Confirm Password" title="Must be atleast 8 or more characters" required><input type="checkbox" onclick="myFunction()">Show Password<br>
 
                 <button id="registerbutton" name="register" class="register-btn" onclick="Validate()">Register</button><br><br>
-
-                Existing User?<button id="existingUser" class="signin-btn"><a href="./login.html" style="color:white">SignIn</a></button>
-
+            <div class="container signin">
+               <p >Existing User?  <u><a class="existinguser" href="./login.html">Signin</a></u></p>
+            </div>
 
             </form>
-        </div>
+        </div>     
     </div>
+    
 </body>
 
 </html>

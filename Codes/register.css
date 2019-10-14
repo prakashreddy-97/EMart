@@ -1,8 +1,10 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background-image: url(images/bckground.jpg);
-    background-size: 900px 700px;
+    background-size: auto;
+    width: 1024px;
 }
+
 .title{
     padding-top: 1px;
     text-align:center;
@@ -15,7 +17,7 @@ text{
 
 .loginform{    
     /* border: 3px solid #f1f1f1; */
-    height: 710px;
+    height: 730px;
     width: 450px;
     position: absolute;
     top: 75%;
@@ -25,46 +27,28 @@ text{
     background:rgba(255, 255, 255, 0.5);
     padding: 10px 20px;
     border-radius: 25px;
-    scroll-padding-bottom: 5px;
+    background
     border: 1px solid black;
     box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
     }
 
 .register-btn{
-    border: none;
-    outline: none;
-    width: 100px;
-    height: 35px;
-    border-radius: 5px;
-    cursor: pointer;
-    float: right;
-    background-color: rgba(0, 0, 255, 0.733);
+    background-color: #4CAF50;
     color: white;
-    border-radius: 4px;
-    margin: 10 150;
-    
-}
-
-
-#existingUser{
+    padding: 16px 20px;
+    margin: 8px 0;
     border: none;
-    width: 65px;
-    height: 25px;
-    border-radius: 5px;
     cursor: pointer;
-    background-color: rgba(0, 0, 255, 0.733);
-    color: white;
-    margin: 5;
-}
-
-#existingUser:hover{
-    opacity: 0.5;
-    background-color: rgba(0, 0, 255, 0.733)
+    width: 100%;
+    opacity: 1;  
 }
 
 .register-btn:hover{
-    opacity: 0.5;
+    opacity: 0.6;
 }
+
+
+
 
 input[type=text] {
     width: 100%;

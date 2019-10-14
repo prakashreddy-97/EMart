@@ -2,6 +2,8 @@
 <html>
 <head>
 <?php
+$_SESSION['userId'] = x;
+
 // Passing the input values
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -39,12 +41,10 @@ if ($status){
     $isAdmin = mysqli_query($con,$isAdminquery);
     $numberofrows = mysqli_num_rows($sol);
     if ($numberofrows == 1) {     
-        echo "Login Successful";      //if credentials match
-        header('Location: homeAfterlogin.html');         // redirects to home page of emart
         echo "Login Successful";    //if credentials match
         $_SESSION['loggedIn'] = true;
         if($isAdmin == 0){
-        header('Location: emart.html');  
+        header('Location: emartHome.php');  
         }       // redirects to home page of emart
         else{
             header('Location: adminhome.html');

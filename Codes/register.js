@@ -6,10 +6,7 @@ function Validate() {
   var password = document.getElementById("pd").value;
   var confirmPassword = document.getElementById("cnfpd").value;
 
-  if (fName == "" || lName == "" || eMail == "" || password == "" || confirmPassword == "") {
-    alert("Please enter all the fields");
-    return;
-  } else if (password != confirmPassword) {
+  if(password != confirmPassword) {
     alert("Password and confirm password doesn't match");
   }
 }
