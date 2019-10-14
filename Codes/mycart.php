@@ -2,7 +2,7 @@
 $product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");
 if (!empty($product_array)) { 
 	foreach($product_array as $key=>$value){
-?>
+
 	<div class="product-item">
 		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
 		<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div>
@@ -13,10 +13,10 @@ if (!empty($product_array)) {
 		</div>
 		</form>
 	</div>
-<?php
+
 	}
 }
-?>
+
 case "add":
 	if(!empty($_POST["quantity"])) {
 		$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");
@@ -52,4 +52,26 @@ case "add":
 	break;
 case "empty":
 	unset($_SESSION["cart_item"]);
-        break;
+		break;
+		
+		$result = mysqli_query($con,"SELECT * FROM `products`");
+		while($row = mysqli_fetch_assoc($result)){
+			echo "<div class='product_wrapper'>
+			<form method='post' action=''>
+			<input type='hidden' name='code' value=".$row['code']." />
+			<div class='image'><img src='".$row['image']."' /></div>
+			<div class='name'>".$row['name']."</div>
+			<div class='price'>$".$row['price']."</div>
+			<button type='submit' class='buy'>Buy Now</button>
+			</form>
+			</div>";
+				}
+		mysqli_close($con);
+		?>
+		 
+		<div style="clear:both;"></div>
+		 
+		<div class="message_box" style="margin:10px 0px;">
+		<?php echo $status; ?>
+		</div>
+?>
