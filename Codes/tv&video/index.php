@@ -25,7 +25,7 @@ echo "<div class='alert alert-danger alert-dismissible fade show' id=msg_display
 echo "<div class='row'>
 <div class='col-md-11 offset-md-1'>";
 
-if($stmt = $connection->query("SELECT * FROM tvandvideo")){
+if($stmt = $connection->query("SELECT * FROM tablets")){
 $no=$stmt->num_rows;
   echo "No of records : <span id=no>$no</span><br>";
 
@@ -36,7 +36,7 @@ echo "<div class='row align-middle' id=d_$row[p_id] >
 <div class='col-md-2'>$row[p_name]</div>
 <div class='col-md-1'>$row[p_id]</div>
 <div class='col-md-1'>$row[price]</div>
-<div class='col-md-2'>$row[description]</div>
+<div class='col-md-1'>$row[description]</div>
 <div class='col-md-1'><span id=$row[p_id] class=del><img src=delete.jpg></span></div>
 </div>";
 }

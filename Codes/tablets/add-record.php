@@ -20,7 +20,7 @@ require "templates/top.php";
 
 
 require "include/config.php";
-
+////////////
 echo "<div class='alert alert-danger alert-dismissible fade show' id=msg_display> </div>";
 
 echo "<br><div class='row'>

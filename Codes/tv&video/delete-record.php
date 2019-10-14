@@ -5,7 +5,7 @@ $elements=array("p_id"=>"$p_id","db_status"=>"","msg"=>"","records_affected"=>""
 require "include/config.php"; // Database connection 
 
 /// Collect the file name of image /////
-if($stmt = $connection->prepare("SELECT img FROM tvandvideo  WHERE p_id=?")){
+if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE p_id=?")){
   $stmt->bind_param('i',$p_id);
   $stmt->execute();
    
@@ -17,7 +17,7 @@ if($stmt = $connection->prepare("SELECT img FROM tvandvideo  WHERE p_id=?")){
   $elements['msg'].=$connection->error;
 }
 ////Delete record from table ///
-$query="DELETE FROM tvandvideo WHERE p_id=?";
+$query="DELETE FROM tablets WHERE p_id=?";
 $stmt = $connection->prepare($query);
 if ($stmt) {
 $stmt->bind_param('i', $p_id);

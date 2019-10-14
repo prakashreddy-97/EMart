@@ -2,7 +2,6 @@
 $p_name=$_POST['p_name'];
 $price=$_POST['price'];
 $description=$_POST['description'];
-$unique_id = substr($p_name,0,3).rand(1,999);
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
@@ -42,7 +41,7 @@ if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
-$query="INSERT INTO computerandaccessories (p_name,price,img,description,unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
+$query="INSERT INTO computerandaccessories (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
 $stmt=$connection->prepare($query);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);

@@ -27,16 +27,14 @@ echo "<div class='row'>
 
 if($stmt = $connection->query("SELECT * FROM tablets")){
 $no=$stmt->num_rows;
-  echo "No of records : <span id=no>$no</span><br>";
-
-
+ 
 while ($row = $stmt->fetch_assoc()) {
 echo "<div class='row align-middle' id=d_$row[p_id] >
 <div class='col-md-3'><img src=images/$row[img] class='square' alt='$row[p_name]'></div>
 <div class='col-md-2'>$row[p_name]</div>
 <div class='col-md-1'>$row[p_id]</div>
 <div class='col-md-1'>$row[price]</div>
-<div class='col-md-2'>$row[description]</div>
+<div class='col-md-1'>$row[description]</div>
 <div class='col-md-1'><span id=$row[p_id] class=del><img src=delete.jpg></span></div>
 </div>";
 }

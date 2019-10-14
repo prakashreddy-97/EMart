@@ -69,7 +69,9 @@
                               <li>
                                  <a href="./register.html">Register</a>
                               </li>
-                             
+                              <li>
+                                 <a href="./contact-us.html">Contact Us</a>
+                              </li>
                            </ul>
                         </div>
                      </div>
@@ -81,16 +83,19 @@
       <div id="loginstyle"class="loginform">
          <div class="title">Contact Us</div>
          <div class="form">
-            <form name="contact-us" class="login"  action="contact-us.php" method="POST">
+            <form name="contact-us" class="login"  action="validation.php" method="POST">
                 <label for="name">Name</label>
                 <input name="name" id="name" type="text"  placeholder="Name" required>
                <label for="emailId">Email Address</label>
-               <input name="emailId" id="emailId" type="text" onfocusout="ValidateEmail()"  placeholder="Email Address" required>               
+               <input name="emailId" id="emailId" type="text" onfocusout="ValidateEmail()"  placeholder="Email Address" required>
+               <label for="mobileNumber">Mobile Number</label>
+               <input name="mobileNumber" id = "pwsd" type="text" placeholder="Mobile Number" class="psclass" value="" required/>
                <label for="sub">Subject</label>
                <input name="sub" id = "sub" type="text" placeholder="Subject" class="psclass" value="" required/>
                <label for="msg">Message</label>
-               <textarea name="msg" id = "msg" cols="50" rows="3" maxlength="100" class="psclass" value="" placeholder="Type your Message Here...." tabindex="5" required></textarea>
-               <button id="submitbutton" name="submit"  class="signin-btn">Submit</button>
+               <!-- <input name="msg" id = "msg" type="text" placeholder="Message" class="psclass" value="" required/> -->
+               <textarea name="msg" id = "msg" cols="50" rows="3" maxlength="10" class="psclass" value="" placeholder="Type your Message Here...." tabindex="5" required></textarea>
+               <button id="submitbutton" onclick= validateForm() class="signin-btn">Submit</button>
             </form>
          </div>
       </div>

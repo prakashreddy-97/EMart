@@ -36,7 +36,7 @@ echo "<div class='row align-middle' id=d_$row[p_id] >
 <div class='col-md-2'>$row[p_name]</div>
 <div class='col-md-1'>$row[p_id]</div>
 <div class='col-md-1'>$row[price]</div>
-<div class='col-md-2'>$row[description]</div> 
+<div class='col-md-1'>$row[description]</div> 
 
 <div class='col-md-1'><span id=$row[p_id] class=del><img src=delete.jpg></span></div>
 </div>";
