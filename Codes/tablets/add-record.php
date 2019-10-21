@@ -30,22 +30,22 @@ echo "
 
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'>Name</div>
-  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=p_name placeholder='Product Name'></div>
+  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=p_name placeholder='Product Name' required></div>
 </div>
 <br>
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'>Price (Enter floating value xx.xx)</div>
-  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=price placeholder='Price'></div>
+  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=price placeholder='Price' required></div>
 </div>
 <br>
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'>Description </div>
-  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=description placeholder='Description...'></div>
+  <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=description placeholder='Description...' required></div>
 </div>
 <br>
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'>Upload file(Image size should be less than 250kb)</div>
-  <div class='col-sm-4'><input type=file name='file_up'></div>
+  <div class='col-sm-4'><input type=file name='file_up' required></div>
 </div>
 
 <br>
@@ -63,7 +63,15 @@ require "templates/bottom.php";
 
 <script>
   function popUp(){
- alert("Product added")
+    var x = document.forms["data"]["p_name"].value;
+    var x1 = document.forms["data"]["price"].value;
+    var x2 = document.forms["data"]["description"].value;
+    var x3 = document.forms["data"]["file_up"].value;
+  if (x == ""||x1 == ""|| x2 ==""||x3=="") {
+    alert("Please fill all the fields");
+  }else{
+ alert("Product added");
+  }
 }
 
 $(document).ready(function() {

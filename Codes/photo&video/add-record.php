@@ -50,7 +50,7 @@ echo "
 <br>
 <div class='row'>
   <div class='col-sm-2 offset-sm-3'></div>
-  <div class='col-sm-4'><button>Submit</button></FORM></div>
+  <div class='col-sm-4'><button onclick=\"popUp();\">Submit</button></FORM></div>
 </div>
 
 ";
@@ -61,6 +61,17 @@ require "templates/bottom.php";
 ?>
 
 <script>
+function popUp(){
+    var x = document.forms["data"]["p_name"].value;
+    var x1 = document.forms["data"]["price"].value;
+    var x2 = document.forms["data"]["description"].value;
+    var x3 = document.forms["data"]["file_up"].value;
+  if (x == ""||x1 == ""|| x2 ==""||x3=="") {
+    alert("Please fill all the fields");
+  }else{
+ alert("Product added");
+  }
+}
 $(document).ready(function() {
 /////////// form submission//
 $("form#data").submit(function(e) {
