@@ -1,12 +1,12 @@
 <?Php
-$p_id=$_GET['p_id'];
+$unique_id=$_GET['unique_id'];
 $todo=$_GET['todo'];
-$elements=array("p_id"=>"$p_id","db_status"=>"","msg"=>"","records_affected"=>"");
+$elements=array("unique_id"=>"$unique_id","db_status"=>"","msg"=>"","records_affected"=>"");
 require "include/config.php"; // Database connection 
 
 /// Collect the file name of image /////
-if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE p_id=?")){
-  $stmt->bind_param('i',$p_id);
+if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE unique_id=?")){
+  $stmt->bind_param('s',$unique_id);
   $stmt->execute();
    
    $result = $stmt->get_result();
@@ -17,11 +17,15 @@ if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE p_id=?")){
   $elements['msg'].=$connection->error;
 }
 ////Delete record from table ///
-$query="DELETE FROM tablets WHERE p_id=?";
+$query="DELETE FROM tablets WHERE unique_id=?";
+$query2 = "DELETE FROM c_table WHERE unique_id=?";
 $stmt = $connection->prepare($query);
+$stmt2 = $connection->prepare($query2);
 if ($stmt) {
-$stmt->bind_param('i', $p_id);
+$stmt->bind_param('s', $unique_id);
 $stmt->execute();
+$stmt2->bind_param('s', $unique_id);
+$stmt2->execute();
 $elements['msg'].=" Record Deleted <br>";
 $elements['records_affected']=$stmt->affected_rows;
 }else{

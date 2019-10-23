@@ -29,13 +29,13 @@ if($stmt = $connection->query("SELECT * FROM tablets")){
 $no=$stmt->num_rows;
  
 while ($row = $stmt->fetch_assoc()) {
-echo "<div class='row align-middle' id=d_$row[p_id] >
+echo "<div class='row align-middle' id=d_$row[unique_id] >
 <div class='col-md-3'><img src=images/$row[img] class='square' alt='$row[p_name]'></div>
 <div class='col-md-2'>$row[p_name]</div>
-<div class='col-md-1'>$row[p_id]</div>
+<div class='col-md-1'>$row[unique_id]</div>
 <div class='col-md-1'>$row[price]</div>
 <div class='col-md-1'>$row[description]</div>
-<div class='col-md-1'><span id=$row[p_id] class=del><img src=delete.jpg></span></div>
+<div class='col-md-1'><span id=$row[unique_id] class=del><img src=delete.jpg></span></div>
 </div>";
 }
 
@@ -52,7 +52,7 @@ $(document).ready(function() {
 /////////// form submission//
 $('.del').click(function(){
 var id=$(this).attr('id');
-$.get('delete-record.php',{'p_id':id,'todo':'delete'},function(return_data){
+$.get('delete-record.php',{'unique_id':id,'todo':'delete'},function(return_data){
 if(return_data.records_affected == 1){
 $("#d_"+id).hide();
 // Number of records to decrease by one
