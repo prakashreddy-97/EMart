@@ -3,6 +3,7 @@ body{
     background-size: 900px 700px;
 }
 .row {
+  
   display: -ms-flexbox; /* IE10 */
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
