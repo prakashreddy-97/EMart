@@ -2,6 +2,7 @@
 $p_name=$_POST['p_name'];
 $price=$_POST['price'];
 $description=$_POST['description'];
+$unique_id = substr($p_name,0,3).rand(1,999);
 $elements=array("msg"=>"","records_affected"=>"","validation_status"=>"T");
 
 //Check price format 
@@ -24,8 +25,8 @@ $elements['validation_status']="F";
 }
 
 // Check file size 
-if ($_FILES[file_up][size]>250000){
-$elements['msg'].="Your uploaded file size is more than 250KB ";
+if ($_FILES[file_up][size]>250000*4){
+$elements['msg'].="Your uploaded file size is more than 1Mb ";
 $elements['msg'].=" so please reduce the file size and then upload.<BR>";
 $elements['validation_status']="F";	
 }
@@ -42,10 +43,13 @@ $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
 $query="INSERT INTO laptops (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
+$query2="INSERT INTO c_table (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
 $stmt=$connection->prepare($query);
+$stmt2=$connection->prepare($query2);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
 if($stmt->execute()){
+    $stmt2->execute();
 $elements['msg'].= "Records added : ".$connection->affected_rows;
 $elements['msg'].= "<br>Product ID : ".$connection->insert_id;
 }else{
