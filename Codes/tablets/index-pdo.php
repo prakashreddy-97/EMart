@@ -21,7 +21,7 @@ require "include/config-pdo.php";
 ////////////
 echo "<div class='row'>
 <div class='col-md-11 offset-md-1'>";
-$q=" SELECT * FROM tablets ";
+$q=" SELECT * FROM `c_table` WHERE `category` = 'tablets'";
 echo "<table class='table my_table'>
 <tr class='info'> <th> Image </th><th>Name</th><th>ID</th><th>Price</th></tr>";
 
