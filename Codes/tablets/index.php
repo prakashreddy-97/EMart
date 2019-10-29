@@ -29,7 +29,7 @@ if($stmt = $connection->query("SELECT * FROM `c_table` WHERE `category` = 'table
 $no=$stmt->num_rows;
  
 while ($row = $stmt->fetch_assoc()) {
-echo "<br><div class='row align-middle' id=d_$row[unique_id] >
+echo "<hr><div class='row align-middle' id=d_$row[unique_id] >
 <div class='col-md-3'><img src=..\Images/$row[img] class='square' alt='$row[p_name]'></div>
 <div class='col-md-2'>$row[p_name]</div>
 <div class='col-md-1'>$row[price]</div>
