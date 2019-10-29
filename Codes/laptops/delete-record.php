@@ -5,7 +5,7 @@ $elements=array("unique_id"=>"$unique_id","db_status"=>"","msg"=>"","records_aff
 require "include/config.php"; // Database connection 
 
 /// Collect the file name of image /////
-if($stmt = $connection->prepare("SELECT img FROM laptops  WHERE unique_id=?")){
+if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
   $stmt->bind_param('i',$unique_id);
   $stmt->execute();
    
@@ -36,7 +36,7 @@ $elements['msg'].=$connection->error;
 
 ///
 if($elements['records_affected']==1){
-	if(@unlink("images/$file_name")) {$elements['msg'].=" File Deleted "; }
+	if(@unlink("..\Images/$file_name")) {$elements['msg'].=" File Deleted "; }
 else{$elements['msg'].=" File Not Deleted ";}
 }
 /// Post back data /////
