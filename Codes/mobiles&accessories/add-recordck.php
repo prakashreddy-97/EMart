@@ -36,12 +36,12 @@ $file_name=$_FILES[file_up][name];//
 if($elements['validation_status']=="T"){
 
 // the path with the file name where the file will be stored
-$add="C:/xampp/htdocs/EMart/Codes/mobiles&accessories/images/$file_name"; 
+$add="C:/xampp/htdocs/EMart/Codes/Images/$file_name"; 
 if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
-$query="INSERT INTO mobilesandaccessories (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
+$query="INSERT INTO c_table (p_name,price,img,description,category) values('$p_name','$price','$file_name','$description','mobilesandaccessories')";
 $stmt=$connection->prepare($query);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
