@@ -5,7 +5,7 @@ $elements=array("unique_id"=>"$unique_id","db_status"=>"","msg"=>"","records_aff
 require "include/config.php"; // Database connection 
 
 /// Collect the file name of image /////
-if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE unique_id=?")){
+if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
   $stmt->bind_param('s',$unique_id);
   $stmt->execute();
    
@@ -17,15 +17,15 @@ if($stmt = $connection->prepare("SELECT img FROM tablets  WHERE unique_id=?")){
   $elements['msg'].=$connection->error;
 }
 ////Delete record from table ///
-$query="DELETE FROM tablets WHERE unique_id=?";
-$query2 = "DELETE FROM c_table WHERE unique_id=?";
+// $query="DELETE FROM tablets WHERE unique_id=?";
+$query = "DELETE FROM c_table WHERE unique_id=?";
 $stmt = $connection->prepare($query);
-$stmt2 = $connection->prepare($query2);
+// $stmt2 = $connection->prepare($query2);
 if ($stmt) {
 $stmt->bind_param('s', $unique_id);
 $stmt->execute();
-$stmt2->bind_param('s', $unique_id);
-$stmt2->execute();
+// $stmt2->bind_param('s', $unique_id);
+// $stmt2->execute();
 $elements['msg'].=" Record Deleted <br>";
 $elements['records_affected']=$stmt->affected_rows;
 }else{
@@ -36,7 +36,7 @@ $elements['msg'].=$connection->error;
 
 ///
 if($elements['records_affected']==1){
-	if(@unlink("images/$file_name")) {$elements['msg'].=" File Deleted "; }
+	if(@unlink("..\Images/$file_name")) {$elements['msg'].=" File Deleted "; }
 else{$elements['msg'].=" File Not Deleted ";}
 }
 /// Post back data /////

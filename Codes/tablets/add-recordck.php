@@ -39,12 +39,15 @@ if($elements['validation_status']=="T"){
 
 // the path with the file name where the file will be stored
 $add="C:/xampp/htdocs/EMart/Codes/tablets/images/$file_name"; 
-if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
+$add2="C:/xampp/htdocs/EMart/Codes/Images/$file_name"; 
+// move_uploaded_file ($_FILES[file_up][tmp_name], $add2);
+if(move_uploaded_file ($_FILES[file_up][tmp_name], $add2)){
+   
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
 $query="INSERT INTO tablets (p_name,price,img,description, unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
-$query2="INSERT INTO c_table (p_name,price,img,description, unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
+$query2="INSERT INTO c_table (p_name,price,img,description, unique_id, category) values('$p_name','$price','$file_name','$description','$unique_id', 'tablets')";
 $stmt=$connection->prepare($query);
 $stmt2=$connection->prepare($query2);
 if($stmt){ 
