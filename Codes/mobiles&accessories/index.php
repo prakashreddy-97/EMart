@@ -29,13 +29,13 @@ if($stmt = $connection->query("SELECT * FROM c_table WHERE category = 'mobilesan
 $no=$stmt->num_rows;
   
 while ($row = $stmt->fetch_assoc()) {
-echo "<div class='row align-middle' id=d_$row[unique_id] >
-<div class='col-md-3'><img src=..\Images/$row[img] class='square' alt='$row[p_name]'></div>
-<div class='col-md-2'>$row[p_name]</div>
-<div class='col-md-1'>$row[price]</div>
-<div class='col-md-1'>$row[description]</div>
-<div class='col-md-1'><span id=$row[unique_id] class=del><img src=delete.jpg></span></div>
-</div>";
+  echo "<hr><div class='row align-middle' id=d_$row[unique_id] >
+  <div class='col-md-3'><img src=..\Images/$row[img] class='square' alt='$row[p_name]'  height ='200' width = '200'></div>
+  <div class='col-md-2'>$row[p_name]</div>
+  <div class='col-md-1'>$row[price]</div>
+  <div class='col-md-4'>$row[description]</div>
+  <div class='col-md-1'><span id=$row[unique_id] class=del><img src=delete.jpg></span></div>
+  </div>";  
 }
 
 }else{

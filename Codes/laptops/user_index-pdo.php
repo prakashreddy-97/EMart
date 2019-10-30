@@ -21,12 +21,12 @@ require "include/config-pdo.php";
 ////////////
 echo "<div class='row'>
 <div class='col-md-11 offset-md-1'>";
-$q=" SELECT * FROM laptops ";
+$q=" SELECT * FROM c_table where category ='tablets' ";
 echo "<table class='table my_table'>
 <tr class='info'> <th> Image </th><th>Name</th><th>ID</th><th>Price</th></tr>";
 
 foreach ($dbo->query($q) as $row) {
-echo "<tr><td><img src=images/$row[img] class='square' alt='$row[p_name]'></td>
+echo "<tr><td><img src=..\Images/$row[img] class='square' alt='$row[p_name]'></td>
 <td><strong>$row[p_name]</strong></td><td>$row[price]  </td></tr>";
 }
 echo "</table>";

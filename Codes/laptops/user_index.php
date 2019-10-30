@@ -27,17 +27,17 @@ echo "<div class='row'>
 
 
 
-if($stmt = $connection->query("SELECT * FROM laptops")){
+if($stmt = $connection->query("SELECT * FROM c_table where category='laptops'")){
 $no=$stmt->num_rows;
 //images display
 while ($row = $stmt->fetch_assoc()) {
-echo "<div class='row align-middle' id=d_$row[p_id] >
-<div class='col-md-4'><img src=images/$row[img] class='square' alt='$row[p_name]'></div>
+echo "<b>Laptops</b><hr><div class='row align-middle' id=d_$row[unique_id] >
+<div class='col-md-4'><img src=..\Images/$row[img] class='square' alt='$row[p_name] height = '200', width = '200''></div>
 <div class='col-md-2'><strong>$row[p_name]</strong></div>
 
-<div class='col-md-2'>$row[e]$</div>
+<div class='col-md-2'>$row[price]$</div>
 <div class='col-md-1'>$row[description]</div>
-<a class='col-md-0' href='/emart/Codes/emart.html'>Add to Cart</a>
+<a class='col-md-0' href='/emart/Codes/mycart.html'>Add to Cart</a>
 </div>";
 }
 

@@ -43,7 +43,7 @@ $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
 $query="INSERT INTO laptops (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
-$query2="INSERT INTO c_table (p_name,price,img,description,category) values('$p_name','$price','$file_name','$description','laptops')";
+$query2="INSERT INTO c_table (p_name,price,img,description,unique_id,category) values('$p_name','$price','$file_name','$description','$unique_id','laptops')";
 $stmt=$connection->prepare($query);
 $stmt2=$connection->prepare($query2);
 if($stmt){ 

@@ -6,7 +6,7 @@ require "include/config.php"; // Database connection
 
 /// Collect the file name of image /////
 if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
-  $stmt->bind_param('i',$unique_id);
+  $stmt->bind_param('s',$unique_id);
   $stmt->execute();
    
    $result = $stmt->get_result();
@@ -17,15 +17,12 @@ if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
   $elements['msg'].=$connection->error;
 }
 ////Delete record from table ///
-$query="DELETE FROM laptops WHERE unique_id=?";
-$query2="DELETE FROM c_table WHERE unique_id=?";
-$stmt=$connection->prepare($query);
-$stmt2 = $connection->prepare($query2);
+$query="DELETE FROM c_table WHERE unique_id=? and category = 'laptops'";
+$stmt = $connection->prepare($query);
 if ($stmt) {
 $stmt->bind_param('s', $unique_id);
 $stmt->execute();
-$stmt2->bind_param('s', $unique_id);
-$stmt2->execute();
+
 $elements['msg'].=" Record Deleted <br>";
 $elements['records_affected']=$stmt->affected_rows;
 }else{

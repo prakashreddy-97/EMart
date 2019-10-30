@@ -18,7 +18,7 @@ if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
 }
 ////Delete record from table ///
 // $query="DELETE FROM tablets WHERE unique_id=?";
-$query = "DELETE FROM c_table WHERE unique_id=?";
+$query = "DELETE FROM c_table WHERE unique_id=? and category ='tablets'";
 $stmt = $connection->prepare($query);
 // $stmt2 = $connection->prepare($query2);
 if ($stmt) {

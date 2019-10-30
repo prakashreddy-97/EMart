@@ -33,7 +33,7 @@ echo "
 </div>
 <br>
 <div class='row'>
-  <div class='col-sm-2 offset-sm-3'>Price (Enter floating value xx.xx)</div>
+  <div class='col-sm-2 offset-sm-3'>Price </div>
   <div class='col-sm-2'><input type='text' class='form-control' id='userid' name=price placeholder='Price'></div>
 </div>
 <br>
@@ -43,7 +43,7 @@ echo "
 </div>
 <br>
 <div class='row'>
-  <div class='col-sm-2 offset-sm-3'>Upload file(Image size should be less than 250kb)</div>
+  <div class='col-sm-2 offset-sm-3'>Upload file(Image size should be less than 1Mb)</div>
   <div class='col-sm-4'><input type=file name='file_up'></div>
 </div>
 
@@ -62,7 +62,7 @@ require "templates/bottom.php";
 
 <script>
 
-$(document).ready(function() {
+
   function popUp(){
     var x = document.forms["data"]["p_name"].value;
     var x1 = document.forms["data"]["price"].value;
@@ -74,6 +74,7 @@ $(document).ready(function() {
  alert("Product added");
   }
 }
+$(document).ready(function() {
 /////////// form submission//
 $("form#data").submit(function(e) {
  e.preventDefault();    
