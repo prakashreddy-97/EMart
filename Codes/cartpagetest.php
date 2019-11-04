@@ -60,46 +60,39 @@ public function count(){
     // return count
     return $rows[0];
 }
-public function transfer($from, $to, $amount) {
- 
-    try {
-        $this->pdo->beginTransaction();
-
-        // get available amount of the transferer account
-        $sql = 'SELECT amount FROM accounts WHERE id=:from';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(array(":from" => $from));
-        $availableAmount = (int) $stmt->fetchColumn();
-        $stmt->closeCursor();
-
-        if ($availableAmount < $amount) {
-            echo 'Insufficient amount to transfer';
-            return false;
-        }
-        // deduct from the transferred account
-        $sql_update_from = 'UPDATE accounts
-            SET amount = amount - :amount
-            WHERE id = :from';
-        $stmt = $this->pdo->prepare($sql_update_from);
-        $stmt->execute(array(":from" => $from, ":amount" => $amount));
-        $stmt->closeCursor();
-
-        // add to the receiving account
-        $sql_update_to = 'UPDATE accounts
-                            SET amount = amount + :amount
-                            WHERE id = :to';
-        $stmt = $this->pdo->prepare($sql_update_to);
-        $stmt->execute(array(":to" => $to, ":amount" => $amount));
-
-        // commit the transaction
-        $this->pdo->commit();
-
-        echo 'The amount has been transferred successfully';
-
-        return true;
-    } catch (PDOException $e) {
-        $this->pdo->rollBack();
-        die($e->getMessage());
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        //enable the submit button
+        $('#payBtn').removeAttr("disabled");
+        //display the errors on the form
+        $(".payment-errors").html(response.error.message);
+    } else {
+        var form$ = $("#paymentFrm");
+        //get token id
+        var token = response['id'];
+        //insert the token into the form
+        form$.append("<input type='hidden' name='stripeToken' value='" 
++ token + "' />");
+        //submit form to the server
+        form$.get(0).submit();
     }
 }
+$(document).ready(function() {
+    //on form submit
+    $("#paymentFrm").submit(function(event) {
+        //disable the submit button to prevent repeated clicks
+        $('#payBtn').attr("disabled", "disabled");
+        
+        //create single-use token to charge the user
+        Stripe.createToken({
+            number: $('.card-number').val(),
+            cvc: $('.card-cvc').val(),
+            exp_month: $('.card-expiry-month').val(),
+            exp_year: $('.card-expiry-year').val()
+        }, stripeResponseHandler);
+        
+        //submit from callback
+        return false;
+    });
+});
 ?>
