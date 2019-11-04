@@ -158,3 +158,75 @@ case "empty":
 		
 
 ?>
+
+//Get the category from the URL
+$category = $_GET['category'];
+
+echo("<h1>Products: $category</h1>");
+echo("<FORM METHOD='LINK' ACTION='products.php'>");
+echo("<INPUT TYPE='submit' VALUE='Back'>");
+echo("</FORM>");
+echo("<hr>");
+
+//Include database file with settings im
+require "db.inc";
+
+//Store the connection in a variable for later use
+$connection = mysql_connect($hostname, $username, $password);
+
+//Check for connection
+if(! $connection )
+{
+  die('Could not connect: ' . mysql_error());
+}
+
+//If the category is all then
+if($category == "All")
+{
+    $query = "SELECT * FROM products";//Select everything
+}
+//If it's not then..
+else
+{
+    $query = "SELECT * FROM products WHERE category = '$category'";
+}
+
+//Open the Database
+mysql_select_db($dbname);
+
+//Start the query
+$result = mysql_query($query, $connection);
+
+if(!$result )
+{
+  die('Could not retrieve data: ' . mysql_error());
+}
+
+//Loop through the rows and display each object
+while($row = mysql_fetch_array($result))
+{
+    //Define all variables we will use
+    $productid = $row['id'];
+    $productname = $row['name'];
+    $productdescription = $row['description'];
+    $productimage = $row['image'];
+    $productprice = $row['price'];
+    $productstock = $row['stock'];
+
+    //Display each product and it's info
+    echo("<h3>$productname</h3>");
+    echo("<a href=$productimage><img border='0' alt=$productname src=$productimage width='100' height='100'></a><br>");
+    echo("$productdescription<br>");
+    echo("<b>Price:</b> £$productprice (ex VAT)<br>");
+    echo("<b>Stock:</b> $productstock<br>");
+
+    //Create a link for each product, that goes to the add to cart script with the product id in the URL
+    //Only if youre logged in can you see this button
+    if( isset($_SESSION['login']))
+    {
+
+        echo("<FORM METHOD='POST' ACTION='process_addtocart.php?id=$productid&quantity=1'>");
+        echo("<INPUT TYPE='submit' VALUE='Add to Cart'>");
+        echo("</FORM>");
+    }
+    echo("<hr>");
