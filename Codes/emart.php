@@ -16,18 +16,6 @@ mysqli_select_db($conn,"emart");
 </head>
 
 <body>
-<!-- <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="tablets/user_index.php">Tablets</a>
-    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
-    <a href="laptops/user_index.php">Laptops</a>
-    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
-    <a href="office_electronics/user_index.php">Office Electronics</a>
-    <a href="photo&video/user_index.php">Photo & Video</a>
-    <a href="smarthome/user_index.php">Smart Home</a>
-    <a href="speakers/user_index.php">Speakers</a>
-    <a href="tv&video/user_index.php">TV & Video</a>
-</div> -->
 
 <script>
 function openNav() {
@@ -70,12 +58,27 @@ function closeNav() {
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <li><a href="javascript:void(0)" class="openbtn" onclick="openNav()">&times;</a>
             <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.html">MyCart</a> </li>
+            <input type="text" placeholder="Search..">
             <li><a href="./logout.php">Logout</a> </li>
           </ul>
         </div>
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="tablets/user_index.php">Tablets</a>
+    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
+    <a href="laptops/user_index.php">Laptops</a>
+    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
+    <a href="office_electronics/user_index.php">Office Electronics</a>
+    <a href="photo&video/user_index.php">Photo & Video</a>
+    <a href="smarthome/user_index.php">Smart Home</a>
+    <a href="speakers/user_index.php">Speakers</a>
+    <a href="tv&video/user_index.php">TV & Video</a>
+</div>
+
       </div>
     </nav>
   </div>
