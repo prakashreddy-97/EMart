@@ -16,6 +16,19 @@ mysqli_select_db($conn,"emart");
 </head>
 
 <body>
+<div id="mySidenav" class="sidenav">
+    
+    <a href="javascript:void(0)" id ="closebtn" onclick=closeNav()>&times;</a>
+    <a href="tablets/user_index.php">Tablets</a>
+    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
+    <a href="laptops/user_index.php">Laptops</a>
+    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
+    <a href="office_electronics/user_index.php">Office Electronics</a>
+    <a href="photo&video/user_index.php">Photo & Video</a>
+    <a href="smarthome/user_index.php">Smart Home</a>
+    <a href="speakers/user_index.php">Speakers</a>
+    <a href="tv&video/user_index.php">TV & Video</a>
+</div>
 
 <script>
 function openNav() {
@@ -45,7 +58,7 @@ function closeNav() {
 
   <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+      
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
             aria-expanded="false" aria-controls="navbar">
@@ -58,28 +71,15 @@ function closeNav() {
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="javascript:void(0)" class="openbtn" onclick="openNav()">&times;</a>
+            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
             <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.html">MyCart</a> </li>
-            <input type="text" placeholder="Search..">
+            <input type="text" placeholder="Search...">
             <li><a href="./logout.php">Logout</a> </li>
           </ul>
         </div>
-        <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="tablets/user_index.php">Tablets</a>
-    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
-    <a href="laptops/user_index.php">Laptops</a>
-    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
-    <a href="office_electronics/user_index.php">Office Electronics</a>
-    <a href="photo&video/user_index.php">Photo & Video</a>
-    <a href="smarthome/user_index.php">Smart Home</a>
-    <a href="speakers/user_index.php">Speakers</a>
-    <a href="tv&video/user_index.php">TV & Video</a>
-</div>
-
-      </div>
+      
     </nav>
   </div>
 
@@ -141,11 +141,11 @@ function closeNav() {
     <?php
       $res = mysqli_query($conn, "select * from c_table");
       if(mysqli_num_rows($res)>0){
-      while($row= mysqli_fetch_array($res)){    
+      while($row= mysqli_fetch_array($res)){
     ?>
     <div class = "col-md-3">
       <form method="POST" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
-        <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
+        <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;">
           <img src="Images/<?php echo $row["img"]; ?>" class="img-responsive" /><br />
 
           <h4 class="text-info"><?php echo $row["p_name"]; ?></h4>
@@ -161,8 +161,8 @@ function closeNav() {
           <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
 
         </div>
-
       </form>
+    </div>
     <?php
     }
   }
