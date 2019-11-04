@@ -35,9 +35,9 @@ echo "<hr><div class='row align-middle' id=d_$row[p_id] >
 <div class='col-md-3'><img src=..\Images/$row[img] class='square' alt='$row[p_name]'></div>
 <div class='col-md-2'><strong>$row[p_name]</strong></div>
 
-<div class='col-md-2'>$row[price]$</div>
+<div class='col-md-2'>$$row[price]</div>
 <div class='col-md-3'>$row[description]</div>
-<a class='col-md-2' href='/emart/Codes/emart.html'>Add to Cart</a>
+<a class='col-md-2' href='/emart/Codes/mycart.html'>Add to Cart</a>
 </div>";
 }
 

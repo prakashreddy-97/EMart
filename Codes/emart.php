@@ -139,30 +139,34 @@ function closeNav() {
 
     <br>
     <?php
-      $res = mysqli_query($conn, "select * from c_table");
+      $res = mysqli_query($conn, "select * from c_table ORDER BY rand()");
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
     ?>
+    
     <div class = "col-md-3">
-      <form method="POST" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
-        <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;">
-          <img src="Images/<?php echo $row["img"]; ?>" class="img-responsive" /><br />
-
-          <h4 class="text-info"><?php echo $row["p_name"]; ?></h4>
+    <hr>
+      <form method="POST" action="productPage.php?action=add&id=<?php echo $row["id"]; ?>">
+        <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px; margin-left: 50px; text-align:center;">
+          <a href = "productPage.php" value = "showProd">
+          <img src="Images/<?php echo $row["img"]; ?>" class="img-responsive" height ='200' width ='200'/><br />
+      </a>
+          <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
 
           <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
 
-          <input type="text" name="quantity" value="1" class="form-control" />
-
-          <input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
+          <input type="hidden" name="hidden_name" class= "pName" value="<?php echo $row["name"]; ?>" />
 
           <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
 
           <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
 
         </div>
-      </form>
+      </form> 
+       
     </div>
+
+      
     <?php
     }
   }
