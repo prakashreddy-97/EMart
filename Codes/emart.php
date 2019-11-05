@@ -12,7 +12,7 @@ mysqli_select_db($conn,"emart");
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="emart.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 </head>
 
 <body>
@@ -144,25 +144,26 @@ function closeNav() {
       while($row= mysqli_fetch_array($res)){
     ?>
     
-    <div class = "col-md-3">
+    <div class ="container">
+    <div class= "row text-center py-5">
+    <div class = "col-md-3 col-sm-6 my-3 my-md-0">
     <hr>
-      <form method="POST" action="productPage.php?action=add&id=<?php echo $row["id"]; ?>">
+    
+    
         <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px; margin-left: 50px; text-align:center;">
-          <a href = "productPage.php" value = "showProd">
-          <img src="Images/<?php echo $row["img"]; ?>" class="img-responsive" height ='200' width ='200'/><br />
+          <a href = "productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
+          <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />
+         
       </a>
+        
           <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
-
+         
           <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
 
-          <input type="hidden" name="hidden_name" class= "pName" value="<?php echo $row["name"]; ?>" />
-
-          <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-
-          <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+          <button type = "submit" class="btn btn-warning my-3"name ="add">Add to Cart <i class="fas fa-shopping-cart"></i></button>
 
         </div>
-      </form> 
+      <!-- </form>  -->
        
     </div>
 
@@ -170,9 +171,29 @@ function closeNav() {
     <?php
     }
   }
+  
     ?>
+<!-- <script>
+$(document).ready(function() {
+
+  $("img#prodImg").click(function(e) {
+
+  e.preventDefault();    
+
+  alert(70);
+
+  $.ajax({
+    url: 'http://localhost/EMart/Codes/productPage.php',
+    type: 'GET',
+    data: {"id": 70},
+    success: function(msg){
+        console.log(msg);
+      }
+    });
     
+  });
 
-  </body>
-
+})
+</script> -->
+</body>
 </html>

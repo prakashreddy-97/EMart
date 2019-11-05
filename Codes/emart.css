@@ -17,6 +17,13 @@
           transition: 0.5s;
           padding-top: 60px;
         }
+       img{
+    max-width: 100%;
+
+    background: lightblue;
+    background: radial-gradient(white 30%, lightblue 70%);
+}
+
 
         #closebtn{
           position: absolute;
