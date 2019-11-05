@@ -76,7 +76,7 @@ function closeNav() {
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.html">MyCart</a> </li>
             <input type="text" placeholder="Search...">
-            <li><a href="./logout.php">Logout</a> </li>
+            <li><a href="./logout.php" id="log">Logout</a> </li>
           </ul>
         </div>
       

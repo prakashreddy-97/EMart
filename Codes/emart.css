@@ -32,6 +32,7 @@
           font-size: 36px;
           margin-left: 50px;
         }
+     
         
         .sidenav a {
           padding: 8px 8px 8px 32px;
@@ -59,4 +60,25 @@
           .sidenav a {font-size: 18px;}
         }
         
+        #navbar input[type=text] {
+          float: right;
+          padding: 6px;
+          border: none;
+          margin-top: 10px;
+          margin-right: 60px;
+          padding-right: 200px;
+          border-radius: 14px;
+          font-size: 16px;
+          
+        }
+        #log {
+          float: right;
+          padding: 6px;
+          border: none;
+          margin-top: 10px;
+          margin-right: 60px;
+          padding-right: 150px;
+          padding-left: 20px;
+          font-size: 16px;
+        }
         
