@@ -45,20 +45,18 @@ mysqli_select_db($conn,"emart");
     $res = mysqli_query($conn, "select * from c_table where p_id = $data");
     $row= mysqli_fetch_array($res);
     ?>
-    <div class ="container">
-    <div class= "row text-center py-5">
-    <div class = "col-md-3 col-sm-6 my-3 my-md-0">      
    
-   <img src="Images/<?php echo $row["img"]; ?>" height ='400' width ='400' id= "prodImg"  /><br />
-   </div>
-   
-          <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
-         
-          <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-          <h4 ><?php echo $row["description"]; ?></h4>
-          <button type = "submit" class="btn btn-warning my-3"name ="add">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+      <div class= "row text-center py-5">
+         <div class = "col-md-3 col-sm-6 my-3 my-md-0">      
+            <img class = "img" src="Images/<?php echo $row["img"]; ?> " height ='400' width ='400' id= "prodImg"/><br />
+         </div>
+            <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
+            <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+            <h4 ><?php echo $row["description"]; ?></h4>
+            <button type = "submit" class="btn btn-warning my-3"name ="add">Add to Cart <i class="fas fa-shopping-cart"></i></button>
        
-    </div>
+      </div>      
+  
     <?php
 
 
