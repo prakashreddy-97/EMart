@@ -30,7 +30,7 @@ if ($status){
         exit();
     }
     $query = "select * from customer where emailid = '".$username."' && password = '".md5($password)."' && verified = 1" ;
-    $isAdminquery = "select AdminAccess from customer  where emailid = '".$username."' && password = '".md5($password)."' && verified = 1";
+    $isAdminquery = "select AdminAccess from customer  where emailid = '".$username."' && password = '".md5($password)."'";
 
     $sol = mysqli_query($con, $query);
     $isAdmin = mysqli_query($con,$isAdminquery);
@@ -41,11 +41,11 @@ if ($status){
         if($isAdmin == 0){
         header('Location: emartHome.php');  
         }       // redirects to home page of emart
-        else{
+        else if($isAdmin == 1){
             header('Location: adminhome.html');
         }// redirect to admin home page of emart
     } else {       
         header('Refresh: 2; url=login.html');
-       echo "Wrong Username or Password. Try Again.";
+       echo "Oops!! Invalid Credentials. Try Again.";
     }
 ?>
