@@ -2,17 +2,12 @@
 <html>
 <head>
 <?php
-$_SESSION['userId'] = x;
+
 
 // Passing the input values
 $username = $_POST['username'];
 $password = $_POST['password'];
 $status = true;
-if($username == "" || $password == "")
-{
-    echo "Error! Text field cannot be blank";
-    $status = false;
-}
 ?>
 <title><?php
 if ($status){

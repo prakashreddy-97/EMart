@@ -1,6 +1,9 @@
 <?php
 $conn = mysqli_connect("localhost","root","");
 mysqli_select_db($conn,"emart");
+if(!$_SESSION['loggedIn']){
+  header('Location:/EMart/Codes/login.html');
+}
 ?>
 <html>
 
