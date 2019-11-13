@@ -37,11 +37,11 @@ if ($status){
     $numberofrows = mysqli_num_rows($sol);
     if ($numberofrows == 1) {     
         echo "Login Successful";    //if credentials match
-        $_SESSION['loggedIn'] = true;
-        if($isAdmin == 0){
-        header('Location: emartHome.php');  
+        $_SESSION['loggedIn'] = false;
+        if($isAdmin == 1){
+        header('Location: emart.php');  
         }       // redirects to home page of emart
-        else if($isAdmin == 1){
+        else if($isAdmin == 0){
             header('Location: adminhome.html');
         }// redirect to admin home page of emart
     } else {       

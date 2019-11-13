@@ -1,9 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost","root","");
 mysqli_select_db($conn,"emart");
-if(!$_SESSION['loggedIn']){
-  header('Location:/EMart/Codes/login.html');
-}
 ?>
 <html>
 
@@ -146,7 +143,7 @@ function closeNav() {
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
     ?>
-    
+    <form id = "myForm" action = "/mycart.php">
     <div class ="container">
     <div class= "row text-center py-5">
     <div class = "col-md-3 col-sm-6 my-3 my-md-0">
@@ -165,6 +162,9 @@ function closeNav() {
       <!-- </form>  -->
        
     </div> 
+      </form>
+      <script>
+        document 
     <?php
     }
   }
