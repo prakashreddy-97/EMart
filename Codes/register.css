@@ -1,8 +1,6 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    background-image: url(images/bckground.jpg);
-    background-size: auto;
-    width: 1024px;
+    background-image: url(images/bckground.jpg);        
 }
 
 .title{
@@ -27,7 +25,6 @@ text{
     background:rgba(255, 255, 255, 0.5);
     padding: 10px 20px;
     border-radius: 25px;
-    background
     border: 1px solid black;
     box-shadow: 0 0 8px 3 px rgb(230, 4, 4);
     }

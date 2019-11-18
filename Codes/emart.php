@@ -143,19 +143,15 @@ function closeNav() {
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
     ?>
-    
+    <form id = "myForm" action = "/mycart.php">
     <div class ="container">
     <div class= "row text-center py-5">
     <div class = "col-md-3 col-sm-6 my-3 my-md-0">
     <hr>
-    
-    
         <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px; margin-left: 50px; text-align:center;">
           <a href = "productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
-          <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />
-         
+          <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />      
       </a>
-        
           <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
          
           <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
@@ -165,9 +161,10 @@ function closeNav() {
         </div>
       <!-- </form>  -->
        
-    </div>
-
-      
+    </div> 
+      </form>
+      <script>
+        document 
     <?php
     }
   }
