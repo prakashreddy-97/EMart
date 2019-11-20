@@ -1,10 +1,14 @@
   
 <?php
-		if(isset($_SESSION['name']))
-		{
-		unset($_SESSION['name']);
-		}
+	session_start();
+		// if(isset($_SESSION['name']))
+		// {
+		// unset($_SESSION['name']);
+		// }
         
-        header('Refresh: 2; url=login.html');
-        echo "<h3>".'Signed out successfully'."</h3>";
+        // header( url=login.html');
+		// echo "<h3>".'Signed out successfully'."</h3>";
+	if(session_destroy()) {
+		header("Location: login.html");
+		}
 ?>

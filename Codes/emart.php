@@ -1,6 +1,60 @@
 <?php
 $conn = mysqli_connect("localhost","root","");
 mysqli_select_db($conn,"emart");
+session_start();
+$uname=$_SESSION['username'];
+if($uname == ""){
+    header('Location: login.html');
+}
+$conn = mysqli_connect("localhost","root","");
+mysqli_select_db($conn,"emart");
+
+if (isset($_POST["add"])){
+    if(isset($_SESSION["cart"])){ 
+        $item_array_id = array_column($_SESSION["cart"], "unique_id");
+        
+        if(!in_array($_GET["unique_id"],$item_array_id)){
+            $count = count($_SESSION["cart"]);
+            $item_array = array(
+                'unique_id' =>$_GET["unique_id"],
+                'item_name'  => $_POST["hidden_name"],
+                'product_price' =>$_POST["hidden_price"],
+                'item_quantity' => $_POST["quantity"],
+               
+            );
+            echo '<script>alert("Product is  added to cart")</script>';
+            $_SESSION["cart"][$count] = $item_array;
+           
+            echo '<script>window.location = "emart.php" </script>';
+
+        }else{
+            echo '<script>alert("Product is already added to cart")</script>';
+        }
+       }
+        else{
+            $item_array = array(
+                'unique_id' =>$_GET["unique_id"],
+                'item_name'  => $_POST["hidden_name"],
+                'product_price' =>$_POST["hidden_price"],
+                'item_quantity' => $_POST["quantity"],
+            );
+            $_SESSION["cart"][0] = $item_array;
+        }
+
+    }
+    if (isset($_GET["action"])){
+      if ($_GET["action"] == "delete"){
+          foreach ($_SESSION["cart"] as $keys => $value){
+              if ($value["product_id"] == $_GET["id"]){
+                  unset($_SESSION["cart"][$keys]);
+                  echo '<script>alert("Product has been Removed...!")</script>';
+                  echo '<script>window.location="Cart.php"</script>';
+              }
+          }
+      }
+  }
+
+
 ?>
 <html>
 
@@ -74,7 +128,7 @@ function closeNav() {
             <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
             <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
             <li><a href="./emart.php">EMart</a></li>
-            <li><a href="./mycart.html">MyCart</a> </li>
+            <li><a href="./mycart.php">MyCart</a> </li>
             <input type="text" placeholder="Search...">
             <li><a href="./logout.php" id="log">Logout</a> </li>
           </ul>
@@ -136,61 +190,41 @@ function closeNav() {
     </script> -->
 
     <!-- to here -->
-
+    <div class ="container">
+    <div class= "row text-center py-5">  
     <br>
     <?php
       $res = mysqli_query($conn, "select * from c_table ORDER BY rand()");
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
     ?>
-    <form id = "myForm" action = "/mycart.php">
-    <div class ="container">
-    <div class= "row text-center py-5">
+  
+    
     <div class = "col-md-3 col-sm-6 my-3 my-md-0">
+    <form method = "post" action = "emart.php?action=add&unique_id=<?php echo $row["unique_id"]?>">
+
+   
     <hr>
         <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px; margin-left: 50px; text-align:center;">
           <a href = "productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
           <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />      
       </a>
-          <h4 class="text-info" name><?php echo $row["p_name"]; ?></h4>
-         
+          <h4 class="text-info" ><?php echo $row["p_name"]; ?></h4>
           <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-
-          <button type = "submit" class="btn btn-warning my-3"name ="add">Add to Cart <i class="fas fa-shopping-cart"></i></button>
-
+         
+          <input type = "hidden" name = "unique_id" value = "<php echo $row[unique_id]; ?>">
+          <input type = "hidden" name = "hidden_name" value = "<php echo $row[p_name]; ?>">
+          <input type = "hidden" name = "hidden_price" value = "<php echo $row[price]; ?>">
+         
         </div>
-      <!-- </form>  -->
-       
+      </form>     
     </div> 
-      </form>
-      <script>
-        document 
+      
     <?php
     }
   }
   
     ?>
-<!-- <script>
-$(document).ready(function() {
 
-  $("img#prodImg").click(function(e) {
-
-  e.preventDefault();    
-
-  alert(70);
-
-  $.ajax({
-    url: 'http://localhost/EMart/Codes/productPage.php',
-    type: 'GET',
-    data: {"id": 70},
-    success: function(msg){
-        console.log(msg);
-      }
-    });
-    
-  });
-
-})
-</script> -->
 </body>
 </html>

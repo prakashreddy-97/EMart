@@ -1,6 +1,6 @@
         body {
           font-family: 'Montserrat', sans-serif;
-          background-image: url("Images/bckground.jpg");
+         
           background-size: 900px 700px;
         }
         .sidenav {
@@ -78,4 +78,5 @@
           padding-left: 20px;
           font-size: 16px;
         }
-        
+
+     

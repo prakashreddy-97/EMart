@@ -1,250 +1,129 @@
-<?php
-$product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");
-if (!empty($product_array)) { 
-	foreach($product_array as $key=>$value){
-?>
-	<div class="product-item">
-		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
-		<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div>
-		<div class="product-tile-footer">
-		<div class="product-title"><?php echo $product_array[$key]["name"]; ?></div>
-		<div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div>
-		<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
-		</div>
-		</form>
-	</div>
-<?php
-	}
-}
-?>
-
-<div id="shopping-cart">
-<div class="txt-heading">Shopping Cart</div>
-
-<a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
-<?php
-if(isset($_SESSION["cart_item"])){
-    $total_quantity = 0;
-    $total_price = 0;
-?>	
-<table class="tbl-cart" cellpadding="10" cellspacing="1">
-<tbody>
-<tr>
-<th style="text-align:left;">Name</th>
-<th style="text-align:left;">Code</th>
-<th style="text-align:right;" width="5%">Quantity</th>
-<th style="text-align:right;" width="10%">Unit Price</th>
-<th style="text-align:right;" width="10%">Price</th>
-<th style="text-align:center;" width="5%">Remove</th>
-</tr>	
-<?php		
-    foreach ($_SESSION["cart_item"] as $item){
-        $item_price = $item["quantity"]*$item["price"];
-		?>
-				<tr>
-				<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-				<td><?php echo $item["code"]; ?></td>
-				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-				<td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
-				</tr>
-				<?php
-				$total_quantity += $item["quantity"];
-				$total_price += ($item["price"]*$item["quantity"]);
-		}
-		?>
-
-<tr>
-<td colspan="2" align="right">Total:</td>
-<td align="right"><?php echo $total_quantity; ?></td>
-<td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>		
+<html>
+  <head>
   <?php
-} else {
-?>
-<div class="no-records">Your Cart is Empty</div>
-<?php
-}
-?>
-</div>
-
-<?php
-$product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");
-if (!empty($product_array)) { 
-	foreach($product_array as $key=>$value){
-//creating product gallery
-	<div class="product-item">
-		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
-		<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div>
-		<div class="product-tile-footer">
-		<div class="product-title"><?php echo $product_array[$key]["name"]; ?></div>
-		<div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div>
-		<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
-		</div>
-		</form>
-	</div>
-
-	}
-}
-if (isset($_POST['action']) && $_POST['action']=="change"){
-	foreach($_SESSION["shopping_cart"] as &$value){
-	  if($value['code'] === $_POST["code"]){
-		  $value['quantity'] = $_POST["quantity"];
-		  break; // Stop the loop after we've found the product
-	  }
-  }
-
+$conn = mysqli_connect("localhost","root","");
+mysqli_select_db($conn,"emart");
+$flag = false;
 session_start();
-$status="";
-if (isset($_POST['action']) && $_POST['action']=="remove"){
-if(!empty($_SESSION["shopping_cart"])) {
-    foreach($_SESSION["shopping_cart"] as $key => $value) {
-      if($_POST["code"] == $key){
-      unset($_SESSION["shopping_cart"][$key]);
-      $status = "<div class='box' style='color:red;'>
-      Product is removed from your cart!</div>";
-      }
-      if(empty($_SESSION["shopping_cart"]))
-      unset($_SESSION["shopping_cart"]);
-      } 
+  $uname=$_SESSION['username'];
+if($uname == ""){
+    header('Location: login.html');
 }
-}
-//adding item to cart
-case "add":
-	if(!empty($_POST["quantity"])) {
-		$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");
-		$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["image"]));
-		
-		if(!empty($_SESSION["cart_item"])) {
-			if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
-				foreach($_SESSION["cart_item"] as $k => $v) {
-						if($productByCode[0]["code"] == $k) {
-							if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-								$_SESSION["cart_item"][$k]["quantity"] = 0;
-							}
-							$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-						}
-				}
-			} else {
-				$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
-			}
-		} else {
-			$_SESSION["cart_item"] = $itemArray;
-		}
-	}
-	break;
-	//remove item from cart
-	case "remove":
-	if(!empty($_SESSION["cart_item"])) {
-		foreach($_SESSION["cart_item"] as $k => $v) {
-			if($_GET["code"] == $k)
-				unset($_SESSION["cart_item"][$k]);				
-			if(empty($_SESSION["cart_item"]))
-				unset($_SESSION["cart_item"]);
-		}
-	}
-	break;
-case "empty":
-	unset($_SESSION["cart_item"]);
-		break;
-		
-		$result = mysqli_query($con,"SELECT * FROM `products`");
-		while($row = mysqli_fetch_assoc($result)){
-			echo "<div class='product_wrapper'>
-			<form method='post' action=''>
-			<input type='hidden' name='code' value=".$row['code']." />
-			<div class='image'><img src='".$row['image']."' /></div>
-			<div class='name'>".$row['name']."</div>
-			<div class='price'>$".$row['price']."</div>
-			<button type='submit' class='buy'>Buy Now</button>
-			</form>
-			</div>";
-				}
-		mysqli_close($con);
-		?>
-		 
-		<div style="clear:both;"></div>
-		 
-		<div class="message_box" style="margin:10px 0px;">
-		<?php echo $status; ?>
-		</div>
-
-		
-
 ?>
+<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+   <link rel="stylesheet" href="mycart.css">
 
-//Get the category from the URL
-$category = $_GET['category'];
+   <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-echo("<h1>Products: $category</h1>");
-echo("<FORM METHOD='LINK' ACTION='products.php'>");
-echo("<INPUT TYPE='submit' VALUE='Back'>");
-echo("</FORM>");
-echo("<hr>");
-
-//Include database file with settings im
-require "db.inc";
-
-//Store the connection in a variable for later use
-$connection = mysql_connect($hostname, $username, $password);
-
-//Check for connection
-if(! $connection )
-{
-  die('Could not connect: ' . mysql_error());
-}
-
-//If the category is all then
-if($category == "All")
-{
-    $query = "SELECT * FROM products";//Select everything
-}
-//If it's not then..
-else
-{
-    $query = "SELECT * FROM products WHERE category = '$category'";
-}
-
-//Open the Database
-mysql_select_db($dbname);
-
-//Start the query
-$result = mysql_query($query, $connection);
-
-if(!$result )
-{
-  die('Could not retrieve data: ' . mysql_error());
-}
-
-//Loop through the rows and display each object
-while($row = mysql_fetch_array($result))
-{
-    //Define all variables we will use
-    $productid = $row['id'];
-    $productname = $row['name'];
-    $productdescription = $row['description'];
-    $productimage = $row['image'];
-    $productprice = $row['price'];
-    $productstock = $row['stock'];
-
-    //Display each product and it's info
-    echo("<h3>$productname</h3>");
-    echo("<a href=$productimage><img border='0' alt=$productname src=$productimage width='100' height='100'></a><br>");
-    echo("$productdescription<br>");
-    echo("<b>Price:</b> £$productprice (ex VAT)<br>");
-    echo("<b>Stock:</b> $productstock<br>");
-
-    //Create a link for each product, that goes to the add to cart script with the product id in the URL
-    //Only if youre logged in can you see this button
-    if( isset($_SESSION['login']))
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
+            <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
+            <li><a href="./emart.php">EMart</a></li>
+            <li><a href="./mycart.php">MyCart</a> </li>
+            <input type="text" placeholder="Search...">
+            <li><a href="./logout.php">Logout</a> </li>
+          </ul>
+        </div>
+      
+    </nav>
+  </div>
+</head>
+<body>
+<div style="clear: both"></div>
+<br/>
+  <h2 class ="title2">My Cart Details</h2>
+  <?php
+  if(isset($_POST['delete']))
+  {
+    $sql_s = "DELETE FROM cart WHERE  userName = '$uname' and product_id = '".$_POST['p_id']."'";
+    $result_s = mysqli_query($conn,$sql_s) ;
+    if($result_s == true)
     {
-
-        echo("<FORM METHOD='POST' ACTION='process_addtocart.php?id=$productid&quantity=1'>");
-        echo("<INPUT TYPE='submit' VALUE='Add to Cart'>");
-        echo("</FORM>");
+      echo '<script language="javascript">';
+      
+      echo '</script>';
     }
-    echo("<hr>");
+  }
+  ?>
+  <div class = "table-responsive">
+  <table class ="table table-bordered">
+    <tr>
+        <th width = "25%">Product Image </th>
+        <th width = "20%">Product Name </th>
+        <th width = "10%">Quantity </th>
+        <th width = "13%">Price Details </th>
+        <th width = "10%">Total Price</th>
+        <th width = "17%">Remove Item</th>
+    </tr>
+    
+  <?php  
+    $uname=$_SESSION['username'];
+    $query = mysqli_query($conn,"select product_id,quantity from cart where userName = '$uname'");
+    // $p_id = mysqli_fetch_row($query);
+    // if(mysqli_num_rows($p_id)>0){
+      $total =0;
+      
+    while($prodcutData = mysqli_fetch_row($query)){    
+    //echo "<script type='text/javascript'>alert('$p_id[0]');</script>";    
+    $res = mysqli_query($conn, "select * from c_table where p_id = $prodcutData[0]");
+  
+    if(mysqli_num_rows($res)>0){  
+      
+    while($row= mysqli_fetch_array($res)){
+  ?>
+  <tr>
+          <td> <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br /> </td>
+          <td><?php echo $row["p_name"]; ?></td>
+
+          <!-- <td><input type="text" value=""  min="1"   style="text-align: center;width:60px; border-radius: 7px;" disabled></td> -->
+          <td> <?php echo $prodcutData[1];?></td>
+          <td>$ <?php echo $row["price"]; ?></td>
+          <td>$ <?php echo $prodcutData[1] * $row["price"];?></td>
+          <td><form method="post" action = "mycart.php"> <input type="submit" name="delete" value="Delete">
+      <input type="hidden" name="p_id" value="<?php echo $prodcutData[0]; ?>">
+ </form></td>
+
+        </tr>
+        <?php
+        $total = $total + ($prodcutData[1]*$row["price"]);
+        }
+      ?>
+      
+      <?php
+    }else{
+      ?>
+      <style> 
+      table:empty{
+        display: none;
+      }
+      </style>
+
+      <?php
+    }
+    }
+    
+  ?>
+  <tr>
+          <td colspan = "4" align = "right">Total </td>
+          <th align = "right">$ <?php echo $total ?></th>
+          <td><input type="submit" value = "CheckOut" name = "checkout" href= "payment.html" /><td>
+      </tr>
+     
+</body>
+</html>
