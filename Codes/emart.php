@@ -126,7 +126,7 @@ function closeNav() {
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
-            <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
+            <li><img src="./Images/newlogo.jpg" height="55" width="55" /></li>
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.php">MyCart</a> </li>
             <input type="text" placeholder="Search...">
@@ -200,12 +200,12 @@ function closeNav() {
     ?>
   
     
-    <div class = "col-md-3 col-sm-6 my-3 my-md-0">
+    <div class = "col-md-3 col-sm-8 my-3 my-md-0">
     <form method = "post" action = "emart.php?action=add&unique_id=<?php echo $row["unique_id"]?>">
 
    
     <hr>
-        <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px; margin-left: 50px; text-align:center;">
+        <div style="border:1px solid #333; background-color:#e6ffe6; border-radius:5px;border-radius: 5px 5px 0 0; padding:10px; margin-left: 50px; text-align:center;">
           <a href = "productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
           <img src="Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />      
       </a>

@@ -35,8 +35,10 @@ if($uname == ""){
             <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.php">MyCart</a> </li>
+            <li><a href="./orderhistory.php">Your Orders</a> </li>
             <input type="text" placeholder="Search...">
             <li><a href="./logout.php">Logout</a> </li>
+            
           </ul>
         </div>
       
@@ -61,7 +63,20 @@ if($uname == ""){
   }
   ?>
   <div class = "table-responsive">
-  <table class ="table table-bordered">
+ 
+    
+  <?php  
+    $uname=$_SESSION['username'];
+    $query = mysqli_query($conn,"select product_id,quantity from cart where userName = '$uname'");
+      $total =0;
+      
+    while($prodcutData = mysqli_fetch_row($query)){    
+    //echo "<script type='text/javascript'>alert('$p_id[0]');</script>";    
+    $res = mysqli_query($conn, "select * from c_table where p_id = $prodcutData[0]");
+  
+    if(mysqli_num_rows($res)>0){  
+      ?>
+       <table class ="table table-bordered" id = "myTable">
     <tr>
         <th width = "25%">Product Image </th>
         <th width = "20%">Product Name </th>
@@ -70,19 +85,7 @@ if($uname == ""){
         <th width = "10%">Total Price</th>
         <th width = "17%">Remove Item</th>
     </tr>
-    
-  <?php  
-    $uname=$_SESSION['username'];
-    $query = mysqli_query($conn,"select product_id,quantity from cart where userName = '$uname'");
-    // $p_id = mysqli_fetch_row($query);
-    // if(mysqli_num_rows($p_id)>0){
-      $total =0;
-      
-    while($prodcutData = mysqli_fetch_row($query)){    
-    //echo "<script type='text/javascript'>alert('$p_id[0]');</script>";    
-    $res = mysqli_query($conn, "select * from c_table where p_id = $prodcutData[0]");
-  
-    if(mysqli_num_rows($res)>0){  
+    <?php
       
     while($row= mysqli_fetch_array($res)){
   ?>
@@ -94,7 +97,7 @@ if($uname == ""){
           <td> <?php echo $prodcutData[1];?></td>
           <td>$ <?php echo $row["price"]; ?></td>
           <td>$ <?php echo $prodcutData[1] * $row["price"];?></td>
-          <td><form method="post" action = "mycart.php"> <input type="submit" name="delete" value="Delete">
+          <td><form method="post" action = "mycart.php"> <input type="submit" name="delete" id = "delete" value="Delete">
       <input type="hidden" name="p_id" value="<?php echo $prodcutData[0]; ?>">
  </form></td>
 
@@ -103,28 +106,26 @@ if($uname == ""){
         $total = $total + ($prodcutData[1]*$row["price"]);
         }
       ?>
-      
+       <tr>
+          <td colspan = "4" align = "right">Total </td>
+          <th align = "right">$ <?php echo $total ?></th>
+          <form action = "payment1.php">
+          <td><input type="submit" value = "CheckOut" name = "checkout" id ="checkout" /><td>
+          </form>
+      </tr>
       <?php
     }else{
       ?>
-      <style> 
-      table:empty{
-        display: none;
       }
-      </style>
+
+      
 
       <?php
     }
     }
     
   ?>
-  <tr>
-          <td colspan = "4" align = "right">Total </td>
-          <th align = "right">$ <?php echo $total ?></th>
-          <form action = "payment1.php">
-          <td><input type="submit" value = "CheckOut" name = "checkout"/><td>
-          </form>
-      </tr>
+ 
      
 </body>
 </html>

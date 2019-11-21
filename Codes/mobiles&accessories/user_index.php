@@ -37,7 +37,7 @@ echo "<hr><div class='row align-middle' id=d_$row[p_id] >
 
 <div class='col-md-2'>$$row[price]</div>
 <div class='col-md-3'>$row[description]</div>
-<a class='col-md-2' href='/emart/Codes/mycart.html'>Add to Cart</a>
+<a class='col-md-2' href='/emart/Codes/mycart.php'>Add to Cart</a>
 </div>";
 }
 
