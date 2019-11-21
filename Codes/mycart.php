@@ -1,5 +1,4 @@
 <html>
-  <head>
   <?php
 $conn = mysqli_connect("localhost","root","");
 mysqli_select_db($conn,"emart");
@@ -122,7 +121,9 @@ if($uname == ""){
   <tr>
           <td colspan = "4" align = "right">Total </td>
           <th align = "right">$ <?php echo $total ?></th>
-          <td><input type="submit" value = "CheckOut" name = "checkout" href= "payment.html" /><td>
+          <form action = "payment1.php">
+          <td><input type="submit" value = "CheckOut" name = "checkout"/><td>
+          </form>
       </tr>
      
 </body>

@@ -159,8 +159,8 @@ span.price {
             <input type="text" id="expmonth" name="expmonth" placeholder="September">
             <div class="row">
               <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                <label for="expyear" >Exp Year</label>
+                <input type="text" id="expyear" name="expyear" selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico">
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
