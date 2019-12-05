@@ -35,17 +35,16 @@ if ($status){
     $isAdminquery = "select AdminAccess from customer  where emailid = '".$username."' && password = '".md5($password)."'";
 
     $sol = mysqli_query($con, $query);
-    $isAdmin = mysqli_query($con,$isAdminquery);
+    $isAdmin = mysqli_query($con,$isAdminquery)->fetch_object()->AdminAccess;
     $numberofrows = mysqli_num_rows($sol);
     session_start();
     if ($numberofrows == 1) { 
         echo "Login Successful";    //if credentials match
-        if($isAdmin == 1){
+        if($isAdmin == 0){
         $_SESSION['username'] = $username;
         header('Location: emart.php');  
         }       // redirects to home page of emart
-        else if($isAdmin == 0){
-            session_register("user");    
+        elseif($isAdmin == 1){    
             $_SESSION['username'] = $username;
             header('Location: adminhome.html');
         }// redirect to admin home page of emart
