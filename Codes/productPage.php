@@ -88,15 +88,22 @@ function hello()
          <div class = "col-md-3 col-sm-6 my-3 my-md-0">      
             <img class = "img" src="Images/<?php echo $row["img"]; ?> " height ='400' width ='400' id= "prodImg"/><br />
          </div>
+         <div class="seperator" style =" height: 100%;
+            width: 1px;
+            background: #DBD7D7;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            left: 50%;"></div>
          <div>
             <h2 class="text-info" name><?php echo $row["p_name"]; ?></h2>
-            <h3 class="text-danger">$ <?php echo $row["price"]; ?></h3>
-            <h4 ><?php echo $row["description"]; ?></h4>
+            <h3><I class="text-danger">Price:</I> $ <?php echo $row["price"]; ?></h3>
+            <h4 ><I class="text-danger">Description:</I> <?php echo $row["description"]; ?></h4>
             <!-- <form met -->
-              <form action = "" method = "post">
-                  <h4> Quantity: </h4><input type = "number" value = 1 min =1 name ="quantity" style = "width:50px";/>
-                  <input type = "submit" class="btn btn-warning my-3" id ="add" name ="add" value = "AddToCart"></input> 
-              </form>
+              <form action = "" method = "post"><div>
+                  <h4 class="text-danger">Quantity:  <input type = "number" value = 1 min =1 max = 10 name ="quantity" style = "width:50px;border-radius:5px";/> <input type = "submit" class="btn btn-warning my-3" id ="add" name ="add" value = "AddToCart"></input> </h4>
+</div>
+                </form>
   </div>
 
       </div>      

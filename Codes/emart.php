@@ -210,6 +210,9 @@ function closeNav() {
     <?php
     }
   }
-?>
+    ?>
+    </div>
+  <div>
+
 </body>
 </html>
