@@ -48,10 +48,13 @@ $elements['msg'].=" File successfully uploaded.<BR>";
 require "include/config.php"; // Database connection 
 //$query="INSERT INTO tablets (p_name,price,img,description, unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
 $query="INSERT INTO c_table (p_name,price,img,description, unique_id, category) values('$p_name','$price','$file_name','$description','$unique_id', 'tablets')";
+$historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category) values('$p_name','Added','$file_name','tablets')";
 //$stmt=$connection->prepare($query);
 $stmt=$connection->prepare($query);
+$stmt2=$connection->prepare($historyQuery);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
+$stmt2->execute();
 if($stmt->execute()){
 $elements['msg'].= "Records added : ".$connection->affected_rows;
 $elements['msg'].= "<br>Product ID : ".$connection->insert_id;

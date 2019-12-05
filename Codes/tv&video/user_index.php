@@ -25,23 +25,34 @@ echo "<div class='alert alert-danger alert-dismissible fade show' id=msg_display
 echo "<div class='row'>
 <div class='col-md-11 offset-md-1'>";
 
-
-
-if($stmt = $connection->query("SELECT * FROM tvandvideo")){
-$no=$stmt->num_rows;
+if($stmt = $connection->query("SELECT * FROM c_table where category = 'tvandvideo'")){
+  $no=$stmt->num_rows;
+    
+  while ($row = $stmt->fetch_assoc()) {
+    ?>
+    <div class = "col-md-3 col-sm-8 my-3 my-md-0">
+    <form method = "post" action = "emart.php?action=add&unique_id=<?php echo $row["unique_id"]?>">
   
-while ($row = $stmt->fetch_assoc()) {
-echo "<div class='row align-middle' id=d_$row[p_id] >
-<div class='col-md-3'><img src=images/$row[img] class='square' alt='$row[p_name]'></div>
-<div class='col-md-2'><strong>$row[p_name]</strong></div>
-
-<div class='col-md-2'>$row[price]$</div>
-<div class='col-md-1'>$row[description]</div>
-<a class='col-md-0' href='/emart/Codes/emart.html'>Add to Cart</a>
-</div>";
-}
-
-}else{
+   
+    <hr>
+        <div style="border:1px solid #333; background-color:#e6ffe6; border-radius:5px;border-radius: 5px 5px 0 0; padding:10px; margin-left: 50px; text-align:center;">
+          <a href = "../productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
+          <img src="../Images/<?php echo $row["img"]; ?>" height ='200' width ='200' id= "prodImg"  /><br />      
+      </a>
+          <h4 class="text-info" ><?php echo $row["p_name"]; ?></h4>
+          <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+         
+          <input type = "hidden" name = "unique_id" value = "<php echo $row[unique_id]; ?>">
+          <input type = "hidden" name = "hidden_name" value = "<php echo $row[p_name]; ?>">
+          <input type = "hidden" name = "hidden_price" value = "<php echo $row[price]; ?>">
+         
+        </div>
+      </form>     
+    </div> 
+    <?php
+  }
+  
+  }else{
 echo $connection->error;
 }
 echo "</div></div>";
