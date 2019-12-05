@@ -71,19 +71,16 @@ if (isset($_POST["add"])){
 
 <body>
 
-
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
 }
-
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
 </script>
-
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
@@ -97,8 +94,19 @@ function closeNav() {
     })();
   </script>
   <!--End of Tawk.to Script-->
-
-  <div id="mySidenav" class="sidenav">
+  
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">      
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" id ="closebtn" onclick=closeNav()>&times;</a>
     <a href="tablets/user_index.php">Tablets</a>
     <a href="computer&accessories/user_index.php">Computer & Accessories</a>
@@ -110,37 +118,19 @@ function closeNav() {
     <a href="speakers/user_index.php">Speakers</a>
     <a href="tv&video/user_index.php">TV & Video</a>
 </div>
-  <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    
-      
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
             <li><img src="./Images/newlogo.jpg" height="55" width="55" /></li>
             <li><a href="./emart.php">EMart</a></li>
-            <li><a href="./mycart.php">MyCart</a> </li><li>
-          <form  method="post" action="search.php?go"  id="searchform">                      
-          <input type="text" name="name"> 
-          <input  type="submit" name="submit" value="Search">
-          </form> 
-
-            <li><a href="./orderhistory.php">My Orders</a> </li>  
+            <li><a href="./mycart.php">MyCart</a> </li>
+            <input type="text" placeholder="Search...">
             <li><a href="./logout.php" id="log">Logout</a> </li>
           </ul>
-        </div>
-      
+        </div>     
     </nav>
   </div>
+
 
   <!--Slide code From Here -->
 <!-- 
@@ -203,12 +193,8 @@ function closeNav() {
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
     ?>
-  
-    
     <div class = "col-md-3 col-sm-8 my-3 my-md-0">
     <form method = "post" action = "emart.php?action=add&unique_id=<?php echo $row["unique_id"]?>">
-
-   
     <hr>
         <div style="border:1px solid #333; background-color:#e6ffe6; border-radius:5px;border-radius: 5px 5px 0 0; padding:10px; margin-left: 50px; text-align:center;">
           <a href = "productPage.php?id=<?php echo $row["p_id"]; ?>" value = "showProd">
@@ -216,7 +202,6 @@ function closeNav() {
       </a>
           <h4 class="text-info" ><?php echo $row["p_name"]; ?></h4>
           <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-         
           <input type = "hidden" name = "unique_id" value = "<php echo $row[unique_id]; ?>">
           <input type = "hidden" name = "hidden_name" value = "<php echo $row[p_name]; ?>">
           <input type = "hidden" name = "hidden_price" value = "<php echo $row[price]; ?>">
