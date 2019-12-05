@@ -21,4 +21,79 @@ h2{
 table th{
   background-color:  #efefef;;
 }
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+img{
+      max-width: 100%;
+      background: lightblue;
+      background: radial-gradient(white 30%, lightblue 70%);
+  }
+
+
+#closebtn{
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+
+.main {
+  margin-left: 100px; 
+  font-size: 28px; 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#navbar input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 10px;
+  margin-right: 60px;
+  padding-right: 200px;
+  border-radius: 14px;
+  font-size: 16px;
   
+}
+#log {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 10px;
+  margin-right: 60px;
+  padding-right: 150px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
