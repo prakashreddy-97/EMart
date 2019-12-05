@@ -25,10 +25,11 @@ if($stmt = $connection->query("SELECT * FROM `adminHistory` WHERE `action` = 'Ad
         $count ++;
     echo "<hr>
     <div class='row align-middle'>/t 
-    <div class = 'col-md-1'>$count )</div>
+    <div class = 'col-md-1'>$count </div>
     <div class='col-md-3'><img src= Images/$row[img] class='square' alt='$row[p_name]'  height ='200' width = '200'></div>
     <div class='col-md-2'>$row[p_name]</div>
     <div class='col-md-1'>$row[category]</div>
+    <div class='col-md-1'>$row[dateModified]</div>
     
     </div>";
     }

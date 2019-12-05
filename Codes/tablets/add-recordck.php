@@ -48,7 +48,8 @@ $elements['msg'].=" File successfully uploaded.<BR>";
 require "include/config.php"; // Database connection 
 //$query="INSERT INTO tablets (p_name,price,img,description, unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
 $query="INSERT INTO c_table (p_name,price,img,description, unique_id, category) values('$p_name','$price','$file_name','$description','$unique_id', 'tablets')";
-$historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category) values('$p_name','Added','$file_name','tablets')";
+$date = date("Y-m-d");
+$historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category,dateModified) values('$p_name','Added','$file_name','tablets',$date)";
 //$stmt=$connection->prepare($query);
 $stmt=$connection->prepare($query);
 $stmt2=$connection->prepare($historyQuery);
