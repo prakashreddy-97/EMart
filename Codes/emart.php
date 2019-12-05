@@ -70,19 +70,7 @@ if (isset($_POST["add"])){
 </head>
 
 <body>
-<div id="mySidenav" class="sidenav">
-    
-    <a href="javascript:void(0)" id ="closebtn" onclick=closeNav()>&times;</a>
-    <a href="tablets/user_index.php">Tablets</a>
-    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
-    <a href="laptops/user_index.php">Laptops</a>
-    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
-    <a href="office_electronics/user_index.php">Office Electronics</a>
-    <a href="photo&video/user_index.php">Photo & Video</a>
-    <a href="smarthome/user_index.php">Smart Home</a>
-    <a href="speakers/user_index.php">Speakers</a>
-    <a href="tv&video/user_index.php">TV & Video</a>
-</div>
+
 
 <script>
 function openNav() {
@@ -110,8 +98,21 @@ function closeNav() {
   </script>
   <!--End of Tawk.to Script-->
 
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id ="closebtn" onclick=closeNav()>&times;</a>
+    <a href="tablets/user_index.php">Tablets</a>
+    <a href="computer&accessories/user_index.php">Computer & Accessories</a>
+    <a href="laptops/user_index.php">Laptops</a>
+    <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
+    <a href="office_electronics/user_index.php">Office Electronics</a>
+    <a href="photo&video/user_index.php">Photo & Video</a>
+    <a href="smarthome/user_index.php">Smart Home</a>
+    <a href="speakers/user_index.php">Speakers</a>
+    <a href="tv&video/user_index.php">TV & Video</a>
+</div>
   <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    
       
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -121,7 +122,6 @@ function closeNav() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
