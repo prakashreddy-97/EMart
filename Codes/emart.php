@@ -128,8 +128,13 @@ function closeNav() {
             <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
             <li><img src="./Images/newlogo.jpg" height="55" width="55" /></li>
             <li><a href="./emart.php">EMart</a></li>
-            <li><a href="./mycart.php">MyCart</a> </li>
-            <input type="text" placeholder="Search...">
+            <li><a href="./mycart.php">MyCart</a> </li><li>
+          <form  method="post" action="search.php?go"  id="searchform">                      
+          <input type="text" name="name"> 
+          <input  type="submit" name="submit" value="Search">
+          </form> 
+
+            <li><a href="./orderhistory.php">My Orders</a> </li>  
             <li><a href="./logout.php" id="log">Logout</a> </li>
           </ul>
         </div>

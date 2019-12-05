@@ -58,6 +58,35 @@ $mail = new PHPMailer(true);
                     $stmt->execute();
                     $delateCart = "DELETE FROM cart WHERE userName = '$uname' AND product_id = $val";
                     $deleted = mysqli_query($conn,$delateCart);
+                    if($deleted){   
+                        try {
+                            $mail->isSMTP();                                            
+                            $mail->Host       = 'smtp.gmail.com';  
+                            $mail->SMTPAuth   = true;                                  
+                            $mail->Username   = 'emart.ecommercesite@gmail.com';              
+                            $mail->Password   = 'St@rk_Tech7';                              
+                            $mail->SMTPSecure = 'tls';                                 
+                            $mail->Port       = 587;                                    
+                             //Recipients
+                            $mail->setFrom('emart.ecommercesite@gmail.com', 'Emart Support');
+                            $mail->addAddress($emailid);     
+                            $mail->addReplyTo('no-reply@gmail.com', 'No reply');
+                            // Content
+                            $mail->isHTML(true);                              
+                            $mail->Subject = 'Order Placed';
+                            $mail->Body    = 'Thank you for shopping in Emart.';
+                            $mail->send();
+                        } 
+                        catch (Exception $e) {
+                            echo "Message cannot be sent. Mailer Error: {$mail->ErrorInfo}";
+                        }
+                     
+                                
+                                     
+                    }
+                    else{
+                        echo $connect->error;
+                    }
                 }
                 echo "Your order has been placed. Thank you.";
                 header ('Refresh:3; url=emart.php');

@@ -11,8 +11,37 @@
   }
   ?>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" /> -->
+   <link rel="stylesheet" href="mycart.css">
+
+   <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">    
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
+            <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
+            <li><a href="./emart.php">EMart</a></li>
+            <li><a href="./mycart.php">MyCart</a> </li>
+            <li><a href="./orderhistory.php">My Orders</a> </li>
+            <input type="text" class = "search" placeholder="Search...">
+            <li><a href="./logout.php" id = "logout" >Logout</a> </li>           
+          </ul>
+        </div>
+    </nav>
+  </div>
 <style>
 body {
   font-family: Arial;
@@ -60,7 +89,30 @@ body {
   border-radius: 3px;
 }
 
-input[type=text] {
+.col-50 input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+#navbar input[type=text]{
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 10px;
+  margin-right: 60px;
+  padding-right: 200px;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+li:last-child{
+  float:right;
+}
+
+#drop{
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
@@ -119,9 +171,21 @@ span.price {
 }
 </style>
 </head>
-<body>
-
-<h2>Provide your details to place the order.</h2>
+<body><script>
+function checkDigit(event) {
+  var cardno = /^(?:3[47][0-9]{13})$/;
+  if(inputtxt.value.match(cardno))
+        {
+      return true;
+        }
+      else
+        {
+        alert("Not a valid Amercican Express credit card number!");
+        return false;
+        }
+}
+</script>
+<h2>Fill in the details to place an order</h2>
 
 <div class="row">
   <div class="col-75">
@@ -164,13 +228,35 @@ span.price {
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="John More Doe" required>
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+            <input type="text"  inpuid="ccnum" onkeypress="return checkDigit(event)" name="cardnumber" placeholder="1111-2222-3333-4444" required>
             <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September" required>
+            <select id = "drop" name = "expmonth">
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            <!-- <input type="text" id="expmonth" name="expmonth" placeholder="September" required> -->
             <div class="row">
               <div class="col-50">
                 <label for="expyear" >Exp Year</label>
-                <input type="number" id="expyear" name="expyear" selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico" required>
+                <select id = "drop" name = "expyear">
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                    <option value="22"> 2022</option>
+                    <option value="23"> 2023</option>
+                    <option value="24"> 2024</option>
+                </select>
+                <!-- <input type="number" id="expyear" name="expyear" selectBoxOptions="Canada;Denmark;Finland;Germany;Mexico" required> -->
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
@@ -193,6 +279,7 @@ span.price {
         <th width = 15%>Quantity</th>
         <th width = 35%>Price</th>
      </tr>
+     
       <?php  
     $uname=$_SESSION['username'];
     $query = mysqli_query($conn,"select product_id,quantity from cart where userName = '$uname'");
@@ -211,7 +298,9 @@ span.price {
           <td> <center> <?php echo $prodcutData[1];?></center></td>
           <td><center>$ <?php echo $prodcutData[1] * $row["price"];?></center></td>
         </tr>
+        
         <?php
+      
         $total = $total + ($prodcutData[1]*$row["price"]);
         }
       ?>
@@ -231,6 +320,7 @@ span.price {
     
   ?>
   <tr>
+        
           <td colspan = "2" align = "right">Total </td>
           <th align = "right">$ <?php echo $total ?></th>
   </tr>
