@@ -11,37 +11,10 @@
   }
   ?>
 <head>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" /> -->
-   <link rel="stylesheet" href="mycart.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">    
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
-            <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
-            <li><a href="./emart.php">EMart</a></li>
-            <li><a href="./mycart.php">MyCart</a> </li>
-            <li><a href="./orderhistory.php">My Orders</a> </li>
-            <input type="text" class = "search" placeholder="Search...">
-            <li><a href="./logout.php" id = "logout" >Logout</a> </li>           
-          </ul>
-        </div>
-    </nav>
-  </div>
+   
 <style>
 body {
   font-family: Arial;
@@ -228,7 +201,7 @@ function checkDigit(event) {
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" placeholder="John More Doe" required>
             <label for="ccnum">Credit card number</label>
-            <input type="text"  inpuid="ccnum" onkeypress="return checkDigit(event)" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+            <input type="text"  inpuid="ccnum" pattern=".{14,16}" name="cardnumber" placeholder="1111-2222-3333-4444" required>
             <label for="expmonth">Exp Month</label>
             <select id = "drop" name = "expmonth">
                     <option value="01">January</option>
