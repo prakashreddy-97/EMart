@@ -53,10 +53,7 @@ $elements['msg'].=$connection->error;
 
 
 ///
-if($elements['records_affected']==1){
-	if(@unlink("..\Images/$file_name")) {$elements['msg'].=" File Deleted "; }
-else{$elements['msg'].=" File Not Deleted ";}
-}
+
 /// Post back data /////
 
 $elements['db_status']="True";

@@ -16,6 +16,22 @@ if($stmt = $connection->prepare("SELECT img FROM c_table  WHERE unique_id=?")){
 }else{
   $elements['msg'].=$connection->error;
 }
+if($stmt = $connection->prepare("SELECT p_name FROM c_table  WHERE unique_id=?")){
+  $stmt->bind_param('s',$unique_id);
+  $stmt->execute();
+   
+   $result = $stmt->get_result();
+   //echo "No of records : ".$result->num_rows."<br>";
+   $row=$result->fetch_object();
+   $p_name=$row->p_name;
+}else{
+  $elements['msg'].=$connection->error;
+}
+
+$date = date("Y-m-d");
+$historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category,dateModified) values('$p_name','Deleted','$file_name','photo&video','$date')";
+$stmt2 = $connection->prepare($historyQuery);
+$stmt2->execute();
 ////Delete record from table ///
 $query="DELETE FROM c_table WHERE unique_id=? and category = 'laptops'";
 $stmt = $connection->prepare($query);
@@ -32,10 +48,7 @@ $elements['msg'].=$connection->error;
 
 
 ///
-if($elements['records_affected']==1){
-	if(@unlink("..\Images/$file_name")) {$elements['msg'].=" File Deleted "; }
-else{$elements['msg'].=" File Not Deleted ";}
-}
+
 /// Post back data /////
 
 $elements['db_status']="True";
