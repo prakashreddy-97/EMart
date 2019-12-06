@@ -46,6 +46,7 @@ $query="INSERT INTO c_table (p_name,price,img,description,unique_id,category) va
 $date = date("Y-m-d");
 $historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category,dateModified) values('$p_name','Added','$file_name','mobilesandaccessories','$date')";
 
+//$stmt=$connection->prepare($query);
 $stmt=$connection->prepare($query);
 $stmt2=$connection->prepare($historyQuery);
 if($stmt){ 

@@ -1,3 +1,4 @@
+
 <?Php
 $p_name=$_POST['p_name'];
 $price=$_POST['price'];
@@ -25,30 +26,42 @@ $elements['validation_status']="F";
 }
 
 // Check file size 
-if ($_FILES[file_up][size]>250000*4){
-$elements['msg'].="Your uploaded file size is more than 1Mb ";
+if ($_FILES[file_up][size]>1000000){
+$elements['msg'].="Your uploaded file size is more than 1MB ";
 $elements['msg'].=" so please reduce the file size and then upload.<BR>";
 $elements['validation_status']="F";	
 }
 
-$file_name=$_FILES[file_up][name];// 
+$file_name=$_FILES[file_up][name];
 
 
 if($elements['validation_status']=="T"){
 
 // the path with the file name where the file will be stored
-$add="C:/xampp/htdocs/EMart/Codes/Images/$file_name"; 
-if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
+
+$add2="C:/xampp/htdocs/EMart/Codes/Images/$file_name"; 
+// move_uploaded_file ($_FILES[file_up][tmp_name], $add2);
+if(move_uploaded_file ($_FILES[file_up][tmp_name], $add2)){
+   
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
-$query="INSERT INTO c_table (p_name,price,img,description,unique_id,category) values('$p_name','$price','$file_name','$description','$unique_id','office_electronics')";
+//$query="INSERT INTO tablets (p_name,price,img,description, unique_id) values('$p_name','$price','$file_name','$description','$unique_id')";
+$query="INSERT INTO c_table (p_name,price,img,`description`, unique_id, category) values('$p_name','$price','$file_name','$description','$unique_id', 'office_electronics')";
+$date = date("Y-m-d");
+$historyQuery = "INSERT INTO adminhistory(p_name,`action`,img,category,dateModified) values('$p_name','Added','$file_name','office_electronics','$date')";
+//$stmt=$connection->prepare($query);
 $stmt=$connection->prepare($query);
+$stmt2=$connection->prepare($historyQuery);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
+
 if($stmt->execute()){
+    $stmt2->execute();
 $elements['msg'].= "Records added : ".$connection->affected_rows;
 $elements['msg'].= "<br>Product ID : ".$connection->insert_id;
+
+
 }else{
 $elements['validation_status']="F";		
 $elements['msg'].="Database error : ". $connection->error;

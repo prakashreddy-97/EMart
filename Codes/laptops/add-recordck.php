@@ -42,10 +42,12 @@ if(move_uploaded_file ($_FILES[file_up][tmp_name], $add)){
 $elements['msg'].=" File successfully uploaded.<BR>";
 // Insert record to table with file name///
 require "include/config.php"; // Database connection 
-$query="INSERT INTO laptops (p_name,price,img,description) values('$p_name','$price','$file_name','$description')";
-$query2="INSERT INTO c_table (p_name,price,img,description,unique_id,category) values('$p_name','$price','$file_name','$description','$unique_id','laptops')";
+$query="INSERT INTO c_table (p_name,price,img,description,unique_id,category) values('$p_name','$price','$file_name','$description','$unique_id','laptops')";
+$date = date("Y-m-d");
+$historyQuery = "INSERT INTO adminHistory(p_name,`action`,img,category,dateModified) values('$p_name','Added','$file_name','laptops','$date')";
+//$stmt=$connection->prepare($query);
 $stmt=$connection->prepare($query);
-$stmt2=$connection->prepare($query2);
+$stmt2=$connection->prepare($historyQuery);
 if($stmt){ 
 $stmt->bind_param("ss", $p_name,$file_name);
 if($stmt->execute()){

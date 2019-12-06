@@ -10,42 +10,73 @@ if($uname == ""){
 }
 ?>
 <head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
-   <link rel="stylesheet" href="mycart.css">
-
-   <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
-            <li><img src="./Images/newlogo.jpg" height="45" width="40" /></li>
-            <li><a href="./emart.php">EMart</a></li>
-            <li><a href="./mycart.php">MyCart</a> </li>
-            <li><a href="./orderhistory.php">My Orders</a> </li>
-            <input type="text" placeholder="Search...">
-            <li><a href="./logout.php">Logout</a> </li>
-            
-          </ul>
-        </div>
-      
-    </nav>
-  </div>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cart Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="mycart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 </head>
 <body>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5d9e0131fbec0f2fe3b8e840/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+<div class="container">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="javascript:void(0)" class="closebtn" onclick=openNav()>&#9776;</a></li>
+            <li><img src="./Images/newlogo.jpg" height="55" width="55" /></li>
+            <li><a href="./emart.php">EMart</a></li>
+            <li><a href="./mycart.php">MyCart</a> </li>
+            <input type="text" placeholder="Search...">
+            <li><a href="./logout.php" id="log">Logout</a> </li>
+          </ul>
+        </div>   
+    </nav>
+  </div>
+  <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" id ="closebtn" onclick=closeNav()>&times;</a>
+      <a href="tablets/user_index.php">Tablets</a>
+      <a href="computer&accessories/user_index.php">Computer & Accessories</a>
+      <a href="laptops/user_index.php">Laptops</a>
+      <a href="mobiles&accessories/user_index.php">Mobiles & Accessories</a>
+      <a href="office_electronics/user_index.php">Office Electronics</a>
+      <a href="photo&video/user_index.php">Photo & Video</a>
+      <a href="smarthome/user_index.php">Smart Home</a>
+      <a href="speakers/user_index.php">Speakers</a>
+      <a href="tv&video/user_index.php">TV & Video</a>
+    </div>
 <div style="clear: both"></div>
 <br/>
   <h2 class ="title2">My Cart Details</h2>
@@ -131,8 +162,6 @@ if($uname == ""){
       ?>
     
     </form>
-</tr>
- 
-     
+</tr>    
 </body>
 </html>
