@@ -36,7 +36,7 @@ if($uname == ""){
             <li><a href="./emart.php">EMart</a></li>
             <li><a href="./mycart.php">MyCart</a> </li>
             <li><a href="./orderhistory.php">My Orders</a> </li>
-            <input type="text" placeholder="Search..." >
+           
             <li><a href="./logout.php">Logout</a> </li>
           </ul>
         </div>

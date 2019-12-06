@@ -64,9 +64,47 @@ if (isset($_POST["add"])){
   <title>Emart Home Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
   <link rel="stylesheet" href="emart.css">
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+  <!-- <style>
+  
+  .searchProd {
+            
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .tt-hint,
+        .product {
+            border: 2px solid #CCCCCC;
+            border-radius: 8px 8px 8px 8px;
+            font-size: 24px;
+            height: 45px;
+            line-height: 30px;
+            outline: medium none;
+            padding: 8px 12px;
+            width: 400px;
+        }
+
+        .tt-dropdown-menu {
+            width: 400px;
+            margin-top: 5px;
+            padding: 8px 12px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px 8px 8px 8px;
+            font-size: 18px;
+            color: #111;
+            background-color: #F1F1F1;
+        }
+    </style> -->
 </head>
 
 <body>
@@ -95,7 +133,9 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 
-  <!--End of Tawk.to Script-->
+
+
+
   
 <div class="container">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">      
@@ -125,73 +165,30 @@ s0.parentNode.insertBefore(s1,s0);
         <li><img src="./Images/newlogo.jpg" height="55" width="55" /></li>
         <li><a href="./emart.php">EMart</a></li>
         <li><a href="./mycart.php">MyCart</a> </li>
-        <input type="text" placeholder="Search...">
+        <li>
+        <form action='' method='post'>
+		      <p><input type='text' id = "product" name='product' placeholder='Search for Product Name' value = "" class='auto'></p>
+          </li><li>
+          <button id = "searchBTN" onclick = "searchBtn()">Search</button>
+          <!-- <p id ="results"></p> -->
+	      </form>
+        </li>     
         <li><a href="./orderhistory.php">Your Orders</a> </li>
         <li><a href="./logout.php" id="log">Logout</a> </li>
       </ul>
     </div>     
   </nav>
 </div>
-<!--Slide code From Here -->
-<!-- 
-  <br><br>
 
-
-  <title>W3.CSS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style>
-    .mySlides {
-      display: none;
-    }
-  </style>
-
-  <body>
-
-    <h2 class="w3-center">Whats hot?</h2>
-
-    <div class="w3-content" style="max-width:400px">
-      <div class="mySlides w3-container w3-red">
-        <h1><b>Did You Know?</b></h1>
-        <h1><i>Microsoft has launched its new products moments ago!!</i></h1>
-      </div>
-
-      <img class="mySlides" src="Images/newlogo.jpg" style="width:100%">
-
-      <div class="mySlides w3-container w3-xlarge w3-white w3-card-4">
-        <p><span class="w3-tag w3-yellow">New!</span>
-      </div>
-      <img class="mySlides" src="Images/newlogo.jpg" style="width:100%">
-      <img class="mySlides" src="Images/tg.jpg" style="width:100%">
-      <img class="mySlides" src="Images/free.jpg" style="width:100%">
-      <img class="mySlides" src="Images/adscopy.jpg" style="width:100%">
-    </div>
-
-    <script>
-      var slideIndex = 0;
-      carousel();
-
-      function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > x.length) { slideIndex = 1 }
-        x[slideIndex - 1].style.display = "block";
-        setTimeout(carousel, 2000);
-      }
-    </script> -->
-
-    <!-- to here -->
     <div class ="container">
     <div class= "row text-center py-5">  
     <br>
     <?php
       $res = mysqli_query($conn, "select * from c_table ORDER BY rand()");
+      $array = array();
       if(mysqli_num_rows($res)>0){
       while($row= mysqli_fetch_array($res)){
+        $array[] = $row;
     ?>
     <div class = "col-md-3 col-sm-8 my-3 my-md-0">
     <form method = "post" action = "emart.php?action=add&unique_id=<?php echo $row["unique_id"]?>">
@@ -214,8 +211,27 @@ s0.parentNode.insertBefore(s1,s0);
     }
   }
     ?>
+    
     </div>
   <div>
+  <script type="text/javascript">
+$(function() {
+  var value = document.getElementById("product").value;
+	//autocomplete
+	$(".auto").autocomplete({
+		source: "search.php",
+		minLength: 1,
+    select:function(data){
 
+    }
+
+	});	
+});
+function searchBtn(){
+  var value = document.getElementById("product").value;
+  window.open("http://localhost/EMart/Codes/productPageSearch.php?product="+value);
+  
+}
+</script>
 </body>
 </html>
