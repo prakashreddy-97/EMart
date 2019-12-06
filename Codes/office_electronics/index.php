@@ -27,9 +27,6 @@ echo "<div class='row'>
 
 if($stmt = $connection->query("SELECT * FROM c_table where category = 'office_electronics'")){
 $no=$stmt->num_rows;
-  echo "No of records : <span id=no>$no</span><br>";
-
-
 while ($row = $stmt->fetch_assoc()) {
 echo "<hr><div class='row align-middle' id=d_$row[unique_id] >
 <div class='col-md-3'><img src=..\Images/$row[img] class='square' alt='$row[p_name]'  height ='200' width = '200'></div>
